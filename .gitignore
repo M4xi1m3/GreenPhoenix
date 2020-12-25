@@ -1,0 +1,16 @@
+# External dependencies
+/external/nbtpp
+/external/stde
+
+# Build directory
+/Debug/
+/build/
+
+# Eclipse stuff
+.settings
+.cproject
+.project
+
+# Temporary lock files
+*~
+

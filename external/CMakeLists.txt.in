@@ -1,0 +1,22 @@
+cmake_minimum_required(VERSION 3.16)
+project(stde-download NONE)
+
+include(ExternalProject)
+ExternalProject_Add(stde-download
+                    SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/stde
+                    URL https://github.com/M4xi1m3/std-extended/archive/master.zip
+                    CONFIGURE_COMMAND ""
+                    BUILD_COMMAND ""
+                    INSTALL_COMMAND ""
+                    TEST_COMMAND "")
+                    
+project(nbtpp-download NONE)
+
+ExternalProject_Add(nbtpp-download
+                    SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/nbtpp
+                    URL https://github.com/M4xi1m3/nbtpp/archive/master.zip
+                    CONFIGURE_COMMAND ""
+                    BUILD_COMMAND ""
+                    INSTALL_COMMAND ""
+                    TEST_COMMAND "")
+
