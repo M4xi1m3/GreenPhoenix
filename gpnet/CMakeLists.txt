@@ -14,8 +14,9 @@ target_include_directories(gpnet PUBLIC ${STDE_HEADERS})
 # Add GPNET headers
 target_include_directories(gpnet PUBLIC ${GPNET_HEADERS})
 
-# Add STDE lib
-target_link_libraries(gpnet stde)
+find_package(Threads)
+# Add libs
+target_link_libraries(gpnet stde ${CMAKE_THREAD_LIBS_INIT})
 
 # Set header path for parent scope.
 set(GPNET_HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/include PARENT_SCOPE)

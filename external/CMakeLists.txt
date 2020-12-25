@@ -1,14 +1,17 @@
 cmake_minimum_required(VERSION 3.16)
+project(external)
 
 # Add stde
 message(WARNING "Downloading stde...")
-configure_file(CMakeLists.txt.in stde-download/CMakeLists.txt)
+configure_file(CMakeLists.txt.in ${CMAKE_CURRENT_BINARY_DIR}/download/CMakeLists.txt)
+
+message(WARNING ${CMAKE_CURRENT_BINARY_DIR})
 
 execute_process(COMMAND "${CMAKE_COMMAND}" -G "${CMAKE_GENERATOR}" .
-    WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/stde-download"
+    WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/download"
 )
 execute_process(COMMAND "${CMAKE_COMMAND}" --build .
-    WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/stde-download"
+    WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/download"
 )
 
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/stde)
@@ -21,10 +24,10 @@ set(HAS_STDE true)
 message(WARNING "Downloading nbtpp...")
 
 execute_process(COMMAND "${CMAKE_COMMAND}" -G "${CMAKE_GENERATOR}" .
-    WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/nbtpp-download"
+    WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/download"
 )
 execute_process(COMMAND "${CMAKE_COMMAND}" --build .
-    WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/nbtpp-download"
+    WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/download"
 )
 
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/nbtpp)
