@@ -19,7 +19,8 @@ namespace gp {
              * @param client_socket Socket of the client to handle.
              * @param id    Handler's unique ID.
              */
-            TCPHandler(stde::net::sock& client_socket, int id) : m_socket(std::move(client_socket)), m_is(m_socket), m_os(m_socket), m_done(false), m_mustStop(false), m_id(id) {
+            TCPHandler(stde::net::sock& client_socket, int id) : m_socket(std::move(client_socket)), m_is(m_socket), m_os(m_socket), m_done(false), m_mustStop(
+                    false), m_id(id) {
 
             }
 

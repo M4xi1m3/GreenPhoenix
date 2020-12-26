@@ -1,6 +1,8 @@
-#include "TestHandler.hpp"
+#include "gpserver/TestHandler.hpp"
 #include <iostream>
 #include <exception>
+
+using namespace gp::server;
 
 TestHandler::~TestHandler() {
 }
