@@ -10,6 +10,7 @@
 .settings
 .cproject
 .project
+.externalToolBuilders
 
 # Temporary lock files
 *~

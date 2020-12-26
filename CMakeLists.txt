@@ -21,6 +21,7 @@ endif()
 
 add_subdirectory(external)
 add_subdirectory(gpnet)
+add_subdirectory(gpprotocol)
 add_subdirectory(gpserver)
 add_subdirectory(doc)
 
