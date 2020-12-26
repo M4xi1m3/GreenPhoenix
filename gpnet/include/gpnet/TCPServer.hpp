@@ -24,7 +24,8 @@ namespace gp {
              * @param ip    IP to bind
              * @param port  Port to bind
              */
-            TCPServer(std::string ip, int port) : m_address(ip, std::to_string(port)), m_socket(m_address), m_running(false), m_mustStop(true), m_handlers(), m_lastId(1) {
+            TCPServer(std::string ip, int port) : m_address(ip, std::to_string(port)), m_socket(m_address), m_running(false), m_mustStop(true), m_handlers(), m_lastId(
+                    1) {
             }
 
             /**
@@ -99,34 +100,35 @@ namespace gp {
                             handler->start();
                         }
                     } catch (const std::system_error &e) {
-
+                        if (e.code().value() != EAGAIN && e.code().value() != EWOULDBLOCK)
+                            l << stde::log::level::error << e.what() << std::endl;
                     }
                     try {
                         // Remove and delete handlers which are done.
-                        for(auto i = m_handlers.begin(); i != m_handlers.end();) {
+                        for (auto i = m_handlers.begin(); i != m_handlers.end();) {
                             if ((*i)->done()) {
+                                (*i)->join();
                                 l << stde::log::level::debug << "Handler#" << (*i)->getID() << " removed." << std::endl;
+                                delete (*i);
+                                (*i) = nullptr;
                                 i = m_handlers.erase(i);
                             } else {
                                 i++;
                             }
                         }
                     } catch (std::exception &e) {
-                        l << stde::log::level::debug << e.what() << std::endl;
+                        l << stde::log::level::error << e.what() << std::endl;
                     }
                     std::this_thread::sleep_for(std::chrono::milliseconds(500));
                 }
 
                 // Stop running handlers
-                for(auto i = m_handlers.begin(); i != m_handlers.end();) {
-                    if ((*i)->done()) {
-                        l << stde::log::level::debug << "Handler#" << (*i)->getID() << " removed." << std::endl;
-                        i = m_handlers.erase(i);
-                    } else {
-                        l << stde::log::level::debug << "Handler#" << (*i)->getID() << " joined." << std::endl;
-                        (*i)->join();
-                        i = m_handlers.erase(i);
-                    }
+                for (auto i = m_handlers.begin(); i != m_handlers.end();) {
+                    l << stde::log::level::debug << "Handler#" << (*i)->getID() << " removed." << std::endl;
+                    (*i)->join();
+                    delete (*i);
+                    (*i) = nullptr;
+                    i = m_handlers.erase(i);
                 }
 
                 m_running = false;

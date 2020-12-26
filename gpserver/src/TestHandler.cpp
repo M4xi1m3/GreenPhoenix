@@ -11,7 +11,7 @@ void TestHandler::handle() {
         try {
             std::string line;
             std::getline(m_is, line);
-            m_os << line;
+            m_os << line << "\n";
             m_os.flush();
             i++;
         } catch (std::exception &e) {
