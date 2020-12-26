@@ -3,6 +3,11 @@ set (CMAKE_CXX_STANDARD 11)
 
 project(GreenPhoenix)
 
+if(MSVC)
+    set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
+    set(BUILD_SHARED_LIBS TRUE)
+endif()
+
 if(DEFINED ASAN)
     # Avoid getting a warning for unused variable.
     set(ignoreMe ${ASAN})
