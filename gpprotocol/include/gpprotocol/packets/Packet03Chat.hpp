@@ -1,27 +1,27 @@
-#ifndef INCLUDE_GPPROTOCOL_PACKETS_PACKET00PING_HPP_
-#define INCLUDE_GPPROTOCOL_PACKETS_PACKET00PING_HPP_
+#ifndef INCLUDE_GPPROTOCOL_PACKETS_PACKET03CHAT_HPP_
+#define INCLUDE_GPPROTOCOL_PACKETS_PACKET03CHAT_HPP_
 
-#include "gpprotocol/Packet.hpp"
+#include <gpprotocol/Packet.hpp>
 
 namespace gp {
     namespace protocol {
         namespace packets {
             /**
-             * This packet may be sent by the client to keep the connection alive.
+             * Represents a chat massage
              */
-            class Packet00Ping: public Packet {
+            class Packet03Chat: public Packet {
             public:
                 /**
                  * Constructor.
                  */
-                Packet00Ping() {
+                Packet03Chat() : message("") {
 
                 }
 
                 /**
                  * Destructor
                  */
-                virtual ~Packet00Ping() {
+                virtual ~Packet03Chat() {
 
                 }
 
@@ -30,7 +30,7 @@ namespace gp {
                  * @param dis   Input stream.
                  */
                 virtual void read(stde::streams::data_istream& dis) {
-
+                    message = dis.read_string();
                 }
 
                 /**
@@ -38,7 +38,7 @@ namespace gp {
                  * @param dos   Output stream.
                  */
                 virtual void write(stde::streams::data_ostream& dos) const {
-
+                    dos.write_string(message);
                 }
 
                 /**
@@ -46,7 +46,7 @@ namespace gp {
                  * @param out   Output stream to write to.
                  */
                 virtual void debug(std::ostream& out) const {
-                    out << "Ping []";
+                    out << "Chat [message: " << message << "]";
                 }
 
                 /**
@@ -54,8 +54,10 @@ namespace gp {
                  * @return  Packet ID.
                  */
                 constexpr static int getID() {
-                    return 0x00;
+                    return 0x03;
                 }
+
+                std::string message;
             };
 
         }

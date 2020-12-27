@@ -37,7 +37,7 @@ namespace gp {
                  * Write packet to stream.
                  * @param dos   Output stream.
                  */
-                virtual void write(stde::streams::data_ostream& dos) {
+                virtual void write(stde::streams::data_ostream& dos) const {
                     dos.write_string(username);
                 }
 
@@ -46,7 +46,7 @@ namespace gp {
                  * @param out   Output stream to write to.
                  */
                 virtual void debug(std::ostream& out) const {
-                    out << "Handshake[username: " << username << "]";
+                    out << "Handshake [username: " << username << "]";
                 }
 
                 /**

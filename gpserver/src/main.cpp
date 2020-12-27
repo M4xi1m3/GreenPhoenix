@@ -3,7 +3,6 @@
 #include "stde/log/log.hpp"
 #include "stde/net/init.hpp"
 #include "gpnet/TCPServer.hpp"
-#include "gpserver/TestHandler.hpp"
 #include "gpprotocol/ProtocolHandler.hpp"
 
 int main(int argc, char** argv) {

@@ -20,6 +20,8 @@ Packet* Packet::parse(stde::streams::data_istream& dis) {
         add_packet(Packet00Ping)
         add_packet(Packet01Login)
         add_packet(Packet02Handshake)
+        add_packet(Packet03Chat)
+        add_packet(Packet04Time)
 
         add_packet(PacketFFKick)
 

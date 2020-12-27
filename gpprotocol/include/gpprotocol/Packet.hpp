@@ -35,7 +35,7 @@ namespace gp {
              * Write packet to stream.
              * @param dos   Output stream.
              */
-            virtual void write(stde::streams::data_ostream& dos) = 0;
+            virtual void write(stde::streams::data_ostream& dos) const = 0;
 
             /**
              * Print an human-readable representation of the packet.
