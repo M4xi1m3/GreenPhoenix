@@ -26,6 +26,9 @@ Packet* Packet::parse(stde::streams::data_istream& dis) {
         add_packet(Packet06SpawnPosition)
         add_packet(Packet07UseEntity)
         add_packet(Packet08Health)
+        add_packet(Packet09Respawn)
+        add_packet(Packet0APlayer)
+        add_packet(Packet0BPlayerPosition)
 
         add_packet(PacketFFKick)
 

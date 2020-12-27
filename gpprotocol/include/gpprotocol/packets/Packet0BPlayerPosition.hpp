@@ -1,5 +1,5 @@
-#ifndef INCLUDE_GPPROTOCOL_PACKETS_PACKET0BPLAYERPOS_HPP_
-#define INCLUDE_GPPROTOCOL_PACKETS_PACKET0BPLAYERPOS_HPP_
+#ifndef INCLUDE_GPPROTOCOL_PACKETS_PACKET0BPLAYERPOSITION_HPP_
+#define INCLUDE_GPPROTOCOL_PACKETS_PACKET0BPLAYERPOSITION_HPP_
 
 #include "gpprotocol/packets/Packet0APlayer.hpp"
 
@@ -54,7 +54,7 @@ namespace gp {
                  * @param out   Output stream to write to.
                  */
                 virtual void debug(std::ostream& out) const {
-                    out << "PlayerPos [onground: " << +onground << "; x: " << x << "; y: " << y << "; z: " << z "]";
+                    out << "PlayerPos [onground: " << +onground << "; x: " << x << "; y: " << y << "; z: " << z << "]";
                 }
 
                 /**
