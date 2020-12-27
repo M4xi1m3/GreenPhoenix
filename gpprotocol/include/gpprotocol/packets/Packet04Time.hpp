@@ -1,13 +1,13 @@
 #ifndef INCLUDE_GPPROTOCOL_PACKETS_PACKET04TIME_HPP_
 #define INCLUDE_GPPROTOCOL_PACKETS_PACKET04TIME_HPP_
 
-#include <gpprotocol/Packet.hpp>
+#include "gpprotocol/Packet.hpp"
 
 namespace gp {
     namespace protocol {
         namespace packets {
             /**
-             * Sent to the client to indicate the time changed.
+             * @brief Sent to the client to indicate the time changed.
              */
             class Packet04Time: public Packet {
             public:
@@ -57,6 +57,9 @@ namespace gp {
                     return 0x04;
                 }
 
+                /**
+                 * Time of the world
+                 */
                 int64_t time;
             };
 

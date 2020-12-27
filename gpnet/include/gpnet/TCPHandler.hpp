@@ -10,7 +10,7 @@
 namespace gp {
     namespace net {
         /**
-         * Represents a TCP handler
+         * @brief Represents a TCP handler
          */
         class TCPHandler {
         public:

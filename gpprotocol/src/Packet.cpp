@@ -22,6 +22,10 @@ Packet* Packet::parse(stde::streams::data_istream& dis) {
         add_packet(Packet02Handshake)
         add_packet(Packet03Chat)
         add_packet(Packet04Time)
+        add_packet(Packet05PlayerInventory)
+        add_packet(Packet06SpawnPosition)
+        add_packet(Packet07UseEntity)
+        add_packet(Packet08Health)
 
         add_packet(PacketFFKick)
 

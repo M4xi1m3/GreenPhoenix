@@ -7,7 +7,7 @@ namespace gp {
     namespace protocol {
         namespace packets {
             /**
-             * Sent by a client when leaving properly or by the server to kick the client.
+             * @brief Sent by a client when leaving properly or by the server to kick the client.
              */
             class PacketFFKick: public Packet {
             public:
@@ -57,6 +57,9 @@ namespace gp {
                     return 0xFF;
                 }
 
+                /**
+                 * Reason for the kick
+                 */
                 std::string reason;
             };
         }

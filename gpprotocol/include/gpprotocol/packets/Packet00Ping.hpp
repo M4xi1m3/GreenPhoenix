@@ -7,7 +7,7 @@ namespace gp {
     namespace protocol {
         namespace packets {
             /**
-             * This packet may be sent by the client to keep the connection alive.
+             * @brief This packet may be sent by the client to keep the connection alive.
              */
             class Packet00Ping: public Packet {
             public:

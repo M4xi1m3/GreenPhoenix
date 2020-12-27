@@ -14,7 +14,7 @@
 namespace gp {
     namespace net {
         /**
-         * Simple multi-threaded TCP server.
+         * @brief Simple multi-threaded TCP server.
          */
         template<class T, typename = std::enable_if<std::is_base_of<TCPHandler, T>::value>>
         class TCPServer {

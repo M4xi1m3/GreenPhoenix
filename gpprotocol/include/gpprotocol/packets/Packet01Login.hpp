@@ -6,7 +6,9 @@
 namespace gp {
     namespace protocol {
         namespace packets {
-
+            /**
+             * @brief Second packet sent by the client, used to send data (name, seed, ...).
+             */
             class Packet01Login: public Packet {
             public:
                 /**
@@ -63,10 +65,29 @@ namespace gp {
                     return 0x01;
                 }
 
+                /**
+                 * Protocol version
+                 */
                 int version;
+
+                /**
+                 * Username
+                 */
                 std::string username;
+
+                /**
+                 * Password
+                 */
                 std::string password;
+
+                /**
+                 * Seed of the world
+                 */
                 int64_t seed;
+
+                /**
+                 * Dimmension
+                 */
                 int8_t dimmension;
             };
 

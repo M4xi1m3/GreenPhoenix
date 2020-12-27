@@ -7,7 +7,7 @@
 namespace gp {
     namespace protocol {
         /**
-         * Represents a packet received / sent by the server.
+         * @brief Represents a packet received / sent by the server.
          */
         class Packet {
         public:

@@ -1,5 +1,5 @@
-#ifndef INCLUDE_GPPROTOCOL_PACKETS_PACKET03CHAT_HPP_
-#define INCLUDE_GPPROTOCOL_PACKETS_PACKET03CHAT_HPP_
+#ifndef INCLUDE_GPPROTOCOL_PACKETS_PACKET0APLAYER_HPP_
+#define INCLUDE_GPPROTOCOL_PACKETS_PACKET0APLAYER_HPP_
 
 #include "gpprotocol/Packet.hpp"
 
@@ -7,21 +7,21 @@ namespace gp {
     namespace protocol {
         namespace packets {
             /**
-             * @brief Represents a chat massage
+             * @brief Contains state of the client.
              */
-            class Packet03Chat: public Packet {
+            class Packet0APlayer: public Packet {
             public:
                 /**
                  * Constructor.
                  */
-                Packet03Chat() : message("") {
+                Packet0APlayer() : onground(false) {
 
                 }
 
                 /**
                  * Destructor
                  */
-                virtual ~Packet03Chat() {
+                virtual ~Packet0APlayer() {
 
                 }
 
@@ -30,7 +30,7 @@ namespace gp {
                  * @param dis   Input stream.
                  */
                 virtual void read(stde::streams::data_istream& dis) {
-                    message = dis.read_string();
+                    onground = dis.read_bool();
                 }
 
                 /**
@@ -38,7 +38,7 @@ namespace gp {
                  * @param dos   Output stream.
                  */
                 virtual void write(stde::streams::data_ostream& dos) const {
-                    dos.write_string(message);
+                    dos.write_bool(onground);
                 }
 
                 /**
@@ -46,7 +46,7 @@ namespace gp {
                  * @param out   Output stream to write to.
                  */
                 virtual void debug(std::ostream& out) const {
-                    out << "Chat [message: " << message << "]";
+                    out << "Player [onground: " << +onground << "]";
                 }
 
                 /**
@@ -54,13 +54,13 @@ namespace gp {
                  * @return  Packet ID.
                  */
                 constexpr static int getID() {
-                    return 0x03;
+                    return 0x0A;
                 }
 
                 /**
-                 * Message
+                 * If the player is on ground or not.
                  */
-                std::string message;
+                bool onground;
             };
 
         }

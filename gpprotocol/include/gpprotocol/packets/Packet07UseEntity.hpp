@@ -1,5 +1,5 @@
-#ifndef INCLUDE_GPPROTOCOL_PACKETS_PACKET03CHAT_HPP_
-#define INCLUDE_GPPROTOCOL_PACKETS_PACKET03CHAT_HPP_
+#ifndef INCLUDE_GPPROTOCOL_PACKETS_PACKET07USEENTITY_HPP_
+#define INCLUDE_GPPROTOCOL_PACKETS_PACKET07USEENTITY_HPP_
 
 #include "gpprotocol/Packet.hpp"
 
@@ -7,21 +7,21 @@ namespace gp {
     namespace protocol {
         namespace packets {
             /**
-             * @brief Represents a chat massage
+             * @brief This packet indicated the client interacted with an entity, either by right-clicking or left-clicking.
              */
-            class Packet03Chat: public Packet {
+            class Packet07UseEntity: public Packet {
             public:
                 /**
                  * Constructor.
                  */
-                Packet03Chat() : message("") {
+                Packet07UseEntity() : user(0), target(0), attack(false) {
 
                 }
 
                 /**
                  * Destructor
                  */
-                virtual ~Packet03Chat() {
+                virtual ~Packet07UseEntity() {
 
                 }
 
@@ -30,7 +30,9 @@ namespace gp {
                  * @param dis   Input stream.
                  */
                 virtual void read(stde::streams::data_istream& dis) {
-                    message = dis.read_string();
+                    user = dis.read_int();
+                    target = dis.read_int();
+                    attack = dis.read_bool();
                 }
 
                 /**
@@ -38,7 +40,7 @@ namespace gp {
                  * @param dos   Output stream.
                  */
                 virtual void write(stde::streams::data_ostream& dos) const {
-                    dos.write_string(message);
+
                 }
 
                 /**
@@ -46,7 +48,7 @@ namespace gp {
                  * @param out   Output stream to write to.
                  */
                 virtual void debug(std::ostream& out) const {
-                    out << "Chat [message: " << message << "]";
+                    out << "UseEntity [user: " << user << "; target: " << target << "; attack: " << +attack << "]";
                 }
 
                 /**
@@ -54,13 +56,23 @@ namespace gp {
                  * @return  Packet ID.
                  */
                 constexpr static int getID() {
-                    return 0x03;
+                    return 0x07;
                 }
 
                 /**
-                 * Message
+                 * EID of the sender.
                  */
-                std::string message;
+                int32_t user;
+
+                /**
+                 * EID of the target.
+                 */
+                int32_t target;
+
+                /**
+                 * True if left click, false otherwise.
+                 */
+                bool attack;
             };
 
         }

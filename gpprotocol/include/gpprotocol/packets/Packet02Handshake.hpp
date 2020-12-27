@@ -7,7 +7,7 @@ namespace gp {
     namespace protocol {
         namespace packets {
             /**
-             * This is the first packet sent when the client connects and is used for Authentication.
+             * @brief This is the first packet sent when the client connects and is used for Authentication.
              */
             class Packet02Handshake: public Packet {
             public:
@@ -57,6 +57,9 @@ namespace gp {
                     return 0x02;
                 }
 
+                /**
+                 * Username
+                 */
                 std::string username;
             };
         }

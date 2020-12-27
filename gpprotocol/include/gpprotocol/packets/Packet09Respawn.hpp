@@ -1,5 +1,5 @@
-#ifndef INCLUDE_GPPROTOCOL_PACKETS_PACKET03CHAT_HPP_
-#define INCLUDE_GPPROTOCOL_PACKETS_PACKET03CHAT_HPP_
+#ifndef INCLUDE_GPPROTOCOL_PACKETS_PACKET09RESPAWN_HPP_
+#define INCLUDE_GPPROTOCOL_PACKETS_PACKET09RESPAWN_HPP_
 
 #include "gpprotocol/Packet.hpp"
 
@@ -7,21 +7,21 @@ namespace gp {
     namespace protocol {
         namespace packets {
             /**
-             * @brief Represents a chat massage
+             * @brief Sent by the client to respawn.
              */
-            class Packet03Chat: public Packet {
+            class Packet09Respawn: public Packet {
             public:
                 /**
                  * Constructor.
                  */
-                Packet03Chat() : message("") {
+                Packet09Respawn() {
 
                 }
 
                 /**
                  * Destructor
                  */
-                virtual ~Packet03Chat() {
+                virtual ~Packet09Respawn() {
 
                 }
 
@@ -30,7 +30,7 @@ namespace gp {
                  * @param dis   Input stream.
                  */
                 virtual void read(stde::streams::data_istream& dis) {
-                    message = dis.read_string();
+
                 }
 
                 /**
@@ -38,7 +38,7 @@ namespace gp {
                  * @param dos   Output stream.
                  */
                 virtual void write(stde::streams::data_ostream& dos) const {
-                    dos.write_string(message);
+
                 }
 
                 /**
@@ -46,7 +46,7 @@ namespace gp {
                  * @param out   Output stream to write to.
                  */
                 virtual void debug(std::ostream& out) const {
-                    out << "Chat [message: " << message << "]";
+                    out << "Respawn []";
                 }
 
                 /**
@@ -54,13 +54,8 @@ namespace gp {
                  * @return  Packet ID.
                  */
                 constexpr static int getID() {
-                    return 0x03;
+                    return 0x09;
                 }
-
-                /**
-                 * Message
-                 */
-                std::string message;
             };
 
         }

@@ -1,5 +1,5 @@
-#ifndef INCLUDE_GPPROTOCOL_PACKETS_PACKET03CHAT_HPP_
-#define INCLUDE_GPPROTOCOL_PACKETS_PACKET03CHAT_HPP_
+#ifndef INCLUDE_GPPROTOCOL_PACKETS_PACKET08HEALTH_HPP_
+#define INCLUDE_GPPROTOCOL_PACKETS_PACKET00PING_HPP_
 
 #include "gpprotocol/Packet.hpp"
 
@@ -7,21 +7,21 @@ namespace gp {
     namespace protocol {
         namespace packets {
             /**
-             * @brief Represents a chat massage
+             * @brief Updates the health of the client.
              */
-            class Packet03Chat: public Packet {
+            class Packet08Health: public Packet {
             public:
                 /**
                  * Constructor.
                  */
-                Packet03Chat() : message("") {
+                Packet08Health() : health(0) {
 
                 }
 
                 /**
                  * Destructor
                  */
-                virtual ~Packet03Chat() {
+                virtual ~Packet08Health() {
 
                 }
 
@@ -30,7 +30,7 @@ namespace gp {
                  * @param dis   Input stream.
                  */
                 virtual void read(stde::streams::data_istream& dis) {
-                    message = dis.read_string();
+                    health = dis.read_byte();
                 }
 
                 /**
@@ -38,7 +38,7 @@ namespace gp {
                  * @param dos   Output stream.
                  */
                 virtual void write(stde::streams::data_ostream& dos) const {
-                    dos.write_string(message);
+                    dos.write_byte(health);
                 }
 
                 /**
@@ -46,7 +46,7 @@ namespace gp {
                  * @param out   Output stream to write to.
                  */
                 virtual void debug(std::ostream& out) const {
-                    out << "Chat [message: " << message << "]";
+                    out << "Health [health: " << health << "]";
                 }
 
                 /**
@@ -54,13 +54,13 @@ namespace gp {
                  * @return  Packet ID.
                  */
                 constexpr static int getID() {
-                    return 0x03;
+                    return 0x08;
                 }
 
                 /**
-                 * Message
+                 * Helth value
                  */
-                std::string message;
+                int8_t health;
             };
 
         }
