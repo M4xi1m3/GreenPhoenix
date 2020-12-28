@@ -39,6 +39,18 @@ Packet* Packet::parse(stde::streams::data_istream& dis) {
         add_packet(Packet12Animation)
 
         add_packet(Packet14NamedEntitySpawn)
+        add_packet(Packet15PickupSpawn)
+        add_packet(Packet16CollectItem)
+        add_packet(Packet17AddObject)
+        add_packet(Packet18MobSpawn)
+
+        add_packet(Packet1CEntityVelocity)
+        add_packet(Packet1DDestroyEntity)
+        add_packet(Packet1EEntity)
+        add_packet(Packet1FEntityMove)
+        add_packet(Packet20EntityLook)
+        add_packet(Packet21EntityMoveLook)
+        add_packet(Packet22EntityTeleport)
 
         add_packet(PacketFFKick)
 

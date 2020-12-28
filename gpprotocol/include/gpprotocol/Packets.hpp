@@ -22,6 +22,18 @@
 #include "gpprotocol/packets/Packet12Animation.hpp"
 
 #include "gpprotocol/packets/Packet14NamedEntitySpawn.hpp"
+#include "gpprotocol/packets/Packet15PickupSpawn.hpp"
+#include "gpprotocol/packets/Packet16CollectItem.hpp"
+#include "gpprotocol/packets/Packet17AddObject.hpp"
+#include "gpprotocol/packets/Packet18MobSpawn.hpp"
+
+#include "gpprotocol/packets/Packet1CEntityVelocity.hpp"
+#include "gpprotocol/packets/Packet1DDestroyEntity.hpp"
+#include "gpprotocol/packets/Packet1EEntity.hpp"
+#include "gpprotocol/packets/Packet1FEntityMove.hpp"
+#include "gpprotocol/packets/Packet20EntityLook.hpp"
+#include "gpprotocol/packets/Packet21EntityMoveLook.hpp"
+#include "gpprotocol/packets/Packet22EntityTeleport.hpp"
 
 #include "gpprotocol/packets/PacketFFKick.hpp"
 

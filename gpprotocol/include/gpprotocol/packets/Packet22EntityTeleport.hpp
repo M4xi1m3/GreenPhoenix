@@ -1,30 +1,27 @@
-#ifndef INCLUDE_GPPROTOCOL_PACKETS_PACKET0EDIGGING_HPP_
-#define INCLUDE_GPPROTOCOL_PACKETS_PACKET0EDIGGING_HPP_
+#ifndef INCLUDE_GPPROTOCOL_PACKETS_PACKET22ENTITYTELEPORT_HPP_
+#define INCLUDE_GPPROTOCOL_PACKETS_PACKET22ENTITYTELEPORT_HPP_
 
-#include "gpprotocol/Packet.hpp"
-
-#include "gpprotocol/types/DigStatus.hpp"
-#include "gpprotocol/types/Direction.hpp"
+#include "gpprotocol/packets/Packet1EEntity.hpp"
 
 namespace gp {
     namespace protocol {
         namespace packets {
             /**
-             * @brief This packet is sent by the client when digging.
+             * @brief This packet is sent to the server when an entity moves more than 4 blocks.
              */
-            class Packet0EDigging: public Packet {
+            class Packet22EntityTeleport: public Packet1EEntity {
             public:
                 /**
                  * Constructor.
                  */
-                Packet0EDigging() : status(types::DigStatus::UNKNOWN), x(0), y(0), z(0), face(types::Direction::UNKNOWN) {
+                Packet22EntityTeleport() : Packet1EEntity(), x(0), y(0), z(0), yaw(0), pitch(0) {
 
                 }
 
                 /**
                  * Destructor
                  */
-                virtual ~Packet0EDigging() {
+                virtual ~Packet22EntityTeleport() {
 
                 }
 
@@ -33,11 +30,12 @@ namespace gp {
                  * @param dis   Input stream.
                  */
                 virtual void read(stde::streams::data_istream& dis) {
-                    status = (types::DigStatus) dis.read_byte();
+                    Packet1EEntity::read(dis);
                     x = dis.read_int();
-                    y = dis.read_byte();
+                    y = dis.read_int();
                     z = dis.read_int();
-                    face = (types::Direction) dis.read_byte();
+                    yaw = dis.read_byte();
+                    pitch = dis.read_byte();
                 }
 
                 /**
@@ -45,11 +43,12 @@ namespace gp {
                  * @param dos   Output stream.
                  */
                 virtual void write(stde::streams::data_ostream& dos) const {
-                    dos.write_byte((int8_t) status);
+                    Packet1EEntity::write(dos);
                     dos.write_int(x);
-                    dos.write_byte(y);
+                    dos.write_int(y);
                     dos.write_int(z);
-                    dos.write_byte((int8_t) face);
+                    dos.write_byte(yaw);
+                    dos.write_byte(pitch);
                 }
 
                 /**
@@ -57,8 +56,7 @@ namespace gp {
                  * @param out   Output stream to write to.
                  */
                 virtual void debug(std::ostream& out) const {
-                    out << "Digging [status: " << types::digStatusName(status) << "; x: " << +x << "; y: " << +y << "; z: " << +z << "; face: "
-                            << types::directionName(face) << "]";
+                    out << "EntityMove [eid: " << eid << "; x: " << x << "; y: " << y << "; z: " << z << "; yaw: " << yaw << "; pitch: " << pitch << "]";
                 }
 
                 /**
@@ -66,33 +64,33 @@ namespace gp {
                  * @return  Packet ID.
                  */
                 constexpr static int getID() {
-                    return 0x0E;
+                    return 0x22;
                 }
 
                 /**
-                 * Status of the diggind
-                 */
-                types::DigStatus status;
-
-                /**
-                 * Block X position
+                 * Relative movement along the X axis.
                  */
                 int32_t x;
 
                 /**
-                 * Block Y position
+                 * Relative movement along the Y axis.
                  */
-                int8_t y;
+                int32_t y;
 
                 /**
-                 * Block Z position
+                 * Relative movement along the Z axis.
                  */
                 int32_t z;
 
                 /**
-                 * Face the player is digging
+                 * Entity's rotation around the X axis.
                  */
-                types::Direction face;
+                int8_t yaw;
+
+                /**
+                 * Entity's rotation around the Y axis.
+                 */
+                int8_t pitch;
             };
 
         }
