@@ -23,6 +23,9 @@ namespace gp {
                     stde::streams::endianconv::big) {
             }
 
+            /**
+             * Destructor
+             */
             virtual ~ProtocolHandler();
 
             /**

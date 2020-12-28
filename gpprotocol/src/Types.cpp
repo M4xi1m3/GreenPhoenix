@@ -5,6 +5,7 @@
  *      Author: maxoufox
  */
 
+#include <gpprotocol/types/Animation.hpp>
 #include "gpprotocol/types/DigStatus.hpp"
 #include "gpprotocol/types/Direction.hpp"
 
@@ -39,6 +40,31 @@ std::string gp::protocol::types::directionName(Direction d) {
             return "WEST";
         case Direction::EAST:
             return "EAST";
+        default:
+            return "UNKNOWN";
+    }
+}
+
+std::string gp::protocol::types::animationName(Animation a) {
+    switch (a) {
+        case Animation::NONE:
+            return "NONE";
+        case Animation::SWING:
+            return "SWING";
+        case Animation::DEATH:
+            return "DEATH";
+        case Animation::UNK100:
+            return "UNK100";
+        case Animation::UNK101:
+            return "UNK101";
+        case Animation::UNK102:
+            return "UNK102";
+        case Animation::UNK103:
+            return "UNK103";
+        case Animation::UNK104:
+            return "UNK104";
+        case Animation::UNK105:
+            return "UNK105";
         default:
             return "UNKNOWN";
     }

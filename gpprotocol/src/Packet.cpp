@@ -34,6 +34,11 @@ Packet* Packet::parse(stde::streams::data_istream& dis) {
         add_packet(Packet0DPlayerPositionLook)
         add_packet(Packet0EDigging)
         add_packet(Packet0FPlacement)
+        add_packet(Packet10HlodingChange)
+        add_packet(Packet11AddToInv)
+        add_packet(Packet12Animation)
+
+        add_packet(Packet14NamedEntitySpawn)
 
         add_packet(PacketFFKick)
 

@@ -17,6 +17,11 @@
 #include "gpprotocol/packets/Packet0DPlayerPositionLook.hpp"
 #include "gpprotocol/packets/Packet0EDigging.hpp"
 #include "gpprotocol/packets/Packet0FPlacement.hpp"
+#include "gpprotocol/packets/Packet10HoldingChange.hpp"
+#include "gpprotocol/packets/Packet11AddToInv.hpp"
+#include "gpprotocol/packets/Packet12Animation.hpp"
+
+#include "gpprotocol/packets/Packet14NamedEntitySpawn.hpp"
 
 #include "gpprotocol/packets/PacketFFKick.hpp"
 
