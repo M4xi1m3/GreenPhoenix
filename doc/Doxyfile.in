@@ -8,3 +8,5 @@ INPUT                  = @MAIN_PAGE@ @STDE_HEADERS@ @NBTPP_HEADERS@ @GPPROTOCOL_
 FILE_PATTERNS          = *.hpp
 RECURSIVE              = YES
 USE_MDFILE_AS_MAINPAGE = @MAIN_PAGE@
+
+QUIET                  = YES

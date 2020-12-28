@@ -1,5 +1,5 @@
-#ifndef INCLUDE_GPPROTOCOL_PACKETS_PACKET0BPLAYERPOSITION_HPP_
-#define INCLUDE_GPPROTOCOL_PACKETS_PACKET0BPLAYERPOSITION_HPP_
+#ifndef INCLUDE_GPPROTOCOL_PACKETS_PACKET0DPLAYERPOSITIONLOOK_HPP_
+#define INCLUDE_GPPROTOCOL_PACKETS_PACKET0DPLAYERPOSITIONLOOK_HPP_
 
 #include "gpprotocol/packets/Packet0APlayer.hpp"
 
@@ -7,21 +7,21 @@ namespace gp {
     namespace protocol {
         namespace packets {
             /**
-             * @brief Contains position of the client.
+             * @brief Contains position and rotation of the client.
              */
-            class Packet0BPlayerPosition: public Packet0APlayer {
+            class Packet0DPlayerPositionLook: public Packet0APlayer {
             public:
                 /**
                  * Constructor.
                  */
-                Packet0BPlayerPosition() : Packet0APlayer(), x(0), y(0), stance(0), z(0) {
+                Packet0DPlayerPositionLook() : Packet0APlayer(), x(0), y(0), stance(0), z(0), yaw(0), pitch(0) {
 
                 }
 
                 /**
                  * Destructor
                  */
-                virtual ~Packet0BPlayerPosition() {
+                virtual ~Packet0DPlayerPositionLook() {
 
                 }
 
@@ -34,6 +34,8 @@ namespace gp {
                     y = dis.read_double();
                     stance = dis.read_double();
                     z = dis.read_double();
+                    yaw = dis.read_float();
+                    pitch = dis.read_float();
                     Packet0APlayer::read(dis);
                 }
 
@@ -46,6 +48,8 @@ namespace gp {
                     dos.write_double(y);
                     dos.write_double(stance);
                     dos.write_double(z);
+                    dos.write_float(yaw);
+                    dos.write_float(pitch);
                     Packet0APlayer::write(dos);
                 }
 
@@ -54,7 +58,8 @@ namespace gp {
                  * @param out   Output stream to write to.
                  */
                 virtual void debug(std::ostream& out) const {
-                    out << "PlayerPosition [onground: " << +onground << "; x: " << x << "; y: " << y << "; z: " << z << "]";
+                    out << "PlayerPositionLook [onground: " << +onground << "; x: " << x << "; y: " << y << "; z: " << z << "; yaw: " << yaw << "; pitch: "
+                            << pitch << "]";
                 }
 
                 /**
@@ -62,7 +67,7 @@ namespace gp {
                  * @return  Packet ID.
                  */
                 constexpr static int getID() {
-                    return 0x0B;
+                    return 0x0D;
                 }
 
                 /**
@@ -84,6 +89,16 @@ namespace gp {
                  * Position Z.
                  */
                 double z;
+
+                /**
+                 * Rotation around the X axis
+                 */
+                float yaw;
+
+                /**
+                 * Rotation around the Y axis.
+                 */
+                float pitch;
             };
 
         }

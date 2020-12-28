@@ -53,6 +53,11 @@ namespace gp {
                 return -1;
             }
 
+            /**
+             * Reads a packet from a stream.
+             * @param dis   Stream to read from
+             * @return      New packet
+             */
             static Packet* parse(stde::streams::data_istream& dis);
 
         };

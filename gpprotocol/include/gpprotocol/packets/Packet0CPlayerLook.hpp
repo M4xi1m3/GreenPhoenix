@@ -1,5 +1,5 @@
-#ifndef INCLUDE_GPPROTOCOL_PACKETS_PACKET0BPLAYERPOSITION_HPP_
-#define INCLUDE_GPPROTOCOL_PACKETS_PACKET0BPLAYERPOSITION_HPP_
+#ifndef INCLUDE_GPPROTOCOL_PACKETS_PACKET0CPLAYERLOOK_HPP_
+#define INCLUDE_GPPROTOCOL_PACKETS_PACKET0CPLAYERLOOK_HPP_
 
 #include "gpprotocol/packets/Packet0APlayer.hpp"
 
@@ -7,21 +7,21 @@ namespace gp {
     namespace protocol {
         namespace packets {
             /**
-             * @brief Contains position of the client.
+             * @brief Contains rotation of the client.
              */
-            class Packet0BPlayerPosition: public Packet0APlayer {
+            class Packet0CPlayerLook: public Packet0APlayer {
             public:
                 /**
                  * Constructor.
                  */
-                Packet0BPlayerPosition() : Packet0APlayer(), x(0), y(0), stance(0), z(0) {
+                Packet0CPlayerLook() : Packet0APlayer(), yaw(0), pitch(0) {
 
                 }
 
                 /**
                  * Destructor
                  */
-                virtual ~Packet0BPlayerPosition() {
+                virtual ~Packet0CPlayerLook() {
 
                 }
 
@@ -30,10 +30,8 @@ namespace gp {
                  * @param dis   Input stream.
                  */
                 virtual void read(stde::streams::data_istream& dis) {
-                    x = dis.read_double();
-                    y = dis.read_double();
-                    stance = dis.read_double();
-                    z = dis.read_double();
+                    yaw = dis.read_float();
+                    pitch = dis.read_float();
                     Packet0APlayer::read(dis);
                 }
 
@@ -42,10 +40,8 @@ namespace gp {
                  * @param dos   Output stream.
                  */
                 virtual void write(stde::streams::data_ostream& dos) const {
-                    dos.write_double(x);
-                    dos.write_double(y);
-                    dos.write_double(stance);
-                    dos.write_double(z);
+                    dos.write_float(yaw);
+                    dos.write_float(pitch);
                     Packet0APlayer::write(dos);
                 }
 
@@ -54,7 +50,7 @@ namespace gp {
                  * @param out   Output stream to write to.
                  */
                 virtual void debug(std::ostream& out) const {
-                    out << "PlayerPosition [onground: " << +onground << "; x: " << x << "; y: " << y << "; z: " << z << "]";
+                    out << "PlayerLook [onground: " << +onground << "; yaw: " << yaw << "; pitch: " << pitch << "]";
                 }
 
                 /**
@@ -62,28 +58,18 @@ namespace gp {
                  * @return  Packet ID.
                  */
                 constexpr static int getID() {
-                    return 0x0B;
+                    return 0x0C;
                 }
 
                 /**
-                 * Position X.
+                 * Rotation around the X axis
                  */
-                double x;
+                float yaw;
 
                 /**
-                 * Position Y (feet).
+                 * Rotation around the Y axis.
                  */
-                double y;
-
-                /**
-                 * Top of the bounding box of the player.
-                 */
-                double stance;
-
-                /**
-                 * Position Z.
-                 */
-                double z;
+                float pitch;
             };
 
         }

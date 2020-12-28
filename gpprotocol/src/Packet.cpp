@@ -6,6 +6,7 @@
 
 using namespace gp::protocol;
 
+// TODO: Find a better way to do this, preferably at run-time instead of static, for modularity.
 #define add_packet(PACKET) \
         case packets::PACKET::getID(): { \
             packets::PACKET* p = new packets::PACKET(); \
@@ -29,6 +30,10 @@ Packet* Packet::parse(stde::streams::data_istream& dis) {
         add_packet(Packet09Respawn)
         add_packet(Packet0APlayer)
         add_packet(Packet0BPlayerPosition)
+        add_packet(Packet0CPlayerLook)
+        add_packet(Packet0DPlayerPositionLook)
+        add_packet(Packet0EDigging)
+        add_packet(Packet0FPlacement)
 
         add_packet(PacketFFKick)
 
