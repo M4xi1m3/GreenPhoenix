@@ -62,6 +62,9 @@ namespace gp {
                     return 0x11;
                 }
 
+                /**
+                 * Item to add.
+                 */
                 types::Item item;
             };
 

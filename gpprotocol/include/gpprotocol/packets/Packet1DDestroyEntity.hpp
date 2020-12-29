@@ -57,6 +57,9 @@ namespace gp {
                     return 0x1D;
                 }
 
+                /**
+                 * EID of the destroyed entity
+                 */
                 int32_t eid;
             };
 

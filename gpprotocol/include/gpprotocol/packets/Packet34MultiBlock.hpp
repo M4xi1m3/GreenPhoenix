@@ -92,9 +92,20 @@ namespace gp {
                     return 0x34;
                 }
 
+                /**
+                 * Chunk X coordinate
+                 */
                 int32_t chunk_x;
+
+                /**
+                 * Chunk Z coordinate
+                 */
                 int32_t chunk_z;
 
+                /**
+                 * List of changed blocks
+                 * @see types::MultiBlock
+                 */
                 std::vector<types::MultiBlock> changes;
             };
 

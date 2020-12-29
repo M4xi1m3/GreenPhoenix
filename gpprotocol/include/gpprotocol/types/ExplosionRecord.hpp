@@ -7,8 +7,19 @@ namespace gp {
     namespace protocol {
         namespace types {
             struct ExplosionRecord {
+                /**
+                 * X offset
+                 */
                 int8_t x;
+
+                /**
+                 * Y offset
+                 */
                 int8_t y;
+
+                /**
+                 * Z offset
+                 */
                 int8_t z;
             };
         }

@@ -81,10 +81,29 @@ namespace gp {
                     return 0x3C;
                 }
 
+                /**
+                 * Center of the explosion's X coordinate
+                 */
                 double x;
+
+                /**
+                 * Center of the explosion's X coordinate
+                 */
                 double y;
+
+                /**
+                 * Center of the explosion's X coordinate
+                 */
                 double z;
+
+                /**
+                 * Explosion's radius
+                 */
                 float radius;
+
+                /**
+                 * List of blocks to be deleted
+                 */
                 std::vector<types::ExplosionRecord> records;
             }
             ;

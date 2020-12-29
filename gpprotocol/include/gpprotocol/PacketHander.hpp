@@ -16,12 +16,6 @@ namespace gp {
             virtual ~PacketHandler() {
             }
 
-            void init(int xid, stde::net::sock* sock, stde::streams::data_ostream* dos) {
-                id = xid;
-                m_sock = sock;
-                m_dos = dos;
-            }
-
             /**
              * Send a packet to the connected client
              * @param p Packet to send
@@ -68,6 +62,14 @@ namespace gp {
             int id;
             stde::net::sock *m_sock;
             stde::streams::data_ostream *m_dos;
+
+            void init(int xid, stde::net::sock* sock, stde::streams::data_ostream* dos) {
+                id = xid;
+                m_sock = sock;
+                m_dos = dos;
+            }
+
+            template<typename, typename> friend class ProtocolHandler;
         };
     }
 }

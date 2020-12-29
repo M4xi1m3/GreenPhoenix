@@ -57,6 +57,9 @@ namespace gp {
                     return 0x1E;
                 }
 
+                /**
+                 * EID of the entity
+                 */
                 int32_t eid;
             };
 
