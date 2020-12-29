@@ -10,6 +10,7 @@
 #include "gpprotocol/types/Animation.hpp"
 #include "gpprotocol/types/DigStatus.hpp"
 #include "gpprotocol/types/Direction.hpp"
+#include "gpprotocol/types/Status.hpp"
 
 using namespace gp::protocol::types;
 
@@ -121,6 +122,21 @@ std::string gp::protocol::types::mobName(Mob l) {
             return "COW";
         case Mob::CHICKEN:
             return "CHICKEN";
+        default:
+            return "UNKNOWN";
+    }
+}
+
+std::string gp::protocol::types::statusnName(Status a) {
+    switch(a) {
+        case Status::UNK2:
+            return "UNK2";
+        case Status::UNK3:
+            return "UNK3";
+        case Status::UNK4:
+            return "UNK4";
+        case Status::UNK5:
+            return "UNK5";
         default:
             return "UNKNOWN";
     }

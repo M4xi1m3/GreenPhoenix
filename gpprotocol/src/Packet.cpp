@@ -52,6 +52,17 @@ Packet* Packet::parse(stde::streams::data_istream& dis) {
         add_packet(Packet21EntityMoveLook)
         add_packet(Packet22EntityTeleport)
 
+        add_packet(Packet26EntityStatus)
+        add_packet(Packet27AttachEntity)
+
+        add_packet(Packet32PreChunk)
+        add_packet(Packet33MapChunk)
+        add_packet(Packet34MultiBlock)
+        add_packet(Packet35BlockChange)
+
+        add_packet(Packet3BTileEntity)
+        add_packet(Packet3CExplosion)
+
         add_packet(PacketFFKick)
 
         default:

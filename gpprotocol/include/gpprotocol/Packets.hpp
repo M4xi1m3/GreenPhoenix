@@ -35,6 +35,17 @@
 #include "gpprotocol/packets/Packet21EntityMoveLook.hpp"
 #include "gpprotocol/packets/Packet22EntityTeleport.hpp"
 
+#include "gpprotocol/packets/Packet26EntityStatus.hpp"
+#include "gpprotocol/packets/Packet27AttachEntity.hpp"
+
+#include "gpprotocol/packets/Packet32PreChunk.hpp"
+#include "gpprotocol/packets/Packet33MapChunk.hpp"
+#include "gpprotocol/packets/Packet34MultiBlock.hpp"
+#include "gpprotocol/packets/Packet35BlockChange.hpp"
+
+#include "gpprotocol/packets/Packet3BTileEntity.hpp"
+#include "gpprotocol/packets/Packet3CExplosion.hpp"
+
 #include "gpprotocol/packets/PacketFFKick.hpp"
 
 #endif
