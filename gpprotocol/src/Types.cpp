@@ -128,7 +128,7 @@ std::string gp::protocol::types::mobName(Mob l) {
 }
 
 std::string gp::protocol::types::statusnName(Status a) {
-    switch(a) {
+    switch (a) {
         case Status::UNK2:
             return "UNK2";
         case Status::UNK3:

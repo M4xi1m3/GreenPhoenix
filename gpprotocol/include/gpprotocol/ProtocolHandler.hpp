@@ -4,14 +4,17 @@
 #include "gpnet/TCPHandler.hpp"
 
 #include "gpprotocol/Packet.hpp"
+#include "gpprotocol/PacketHander.hpp"
 
 #include "stde/log/log.hpp"
+#include "stde/streams/exceptions.hpp"
 
 namespace gp {
     namespace protocol {
         /**
          * Handles A1.2.6 protocol
          */
+        template<class T, typename = std::enable_if<std::is_base_of<PacketHandler, T>::value>>
         class ProtocolHandler: public gp::net::TCPHandler {
         public:
             /**
@@ -20,34 +23,55 @@ namespace gp {
              * @param id    Unique TCPHandler id
              */
             ProtocolHandler(stde::net::sock& client_socket, int id) : TCPHandler(client_socket, id), m_dis(m_is, stde::streams::endianconv::big), m_dos(m_os,
-                    stde::streams::endianconv::big) {
+                    stde::streams::endianconv::big), l(stde::log::log::get("protocol")) {
+                handler.init(id, &m_socket, &m_dos);
             }
 
             /**
              * Destructor
              */
-            virtual ~ProtocolHandler();
+            virtual ~ProtocolHandler() {
+
+            }
 
             /**
              * Handle the connection
              */
-            void handle();
+            void handle() {
+                while (!mustStop()) {
+                    try {
+                        Packet *p = Packet::parse(m_dis);
+                        l << stde::log::level::debug << "#" << getID() << " [C->S] " << p << std::endl;
+                        handler.handle(p);
+
+                        delete p;
+
+                    } catch (stde::streams::eof_exception &e) {
+                        break;
+                    } catch (std::exception &e) {
+                        l << stde::log::level::error << e.what() << std::endl;
+                        break;
+                    }
+                }
+                m_socket.close();
+            }
 
             /**
              * Stop the hander
              */
-            void stop();
-
-            /**
-             * Send a packet to the connected client
-             * @param p Packet to send
-             */
-            void send(const Packet& p);
+            void stop() {
+                if (!done())
+                    handler.stop();
+                m_socket.shutdown();
+                m_socket.close();
+            }
         private:
-            static stde::log::log l;
+            stde::log::log l;
 
             stde::streams::data_istream m_dis;
             stde::streams::data_ostream m_dos;
+
+            T handler;
         };
 
     }
