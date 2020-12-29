@@ -49,13 +49,7 @@ namespace gp {
                     out << "Entity [eid: " << eid << "]";
                 }
 
-                /**
-                 * Get the ID associated with the packet's class.
-                 * @return  Packet ID.
-                 */
-                constexpr static int getID() {
-                    return 0x1E;
-                }
+                packetID(0x1E)
 
                 /**
                  * EID of the entity

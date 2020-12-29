@@ -41,7 +41,6 @@ namespace gp {
                 while (!mustStop()) {
                     try {
                         Packet *p = Packet::parse(m_dis);
-                        l << stde::log::level::debug << "#" << getID() << " [C->S] " << p << std::endl;
                         handler.handle(p);
 
                         delete p;
@@ -64,6 +63,14 @@ namespace gp {
                     handler.stop();
                 m_socket.shutdown();
                 m_socket.close();
+            }
+
+            /**
+             * Get pointer to handler
+             * @return  Pointer to handler
+             */
+            T* getHandler() {
+                return &handler;
             }
         private:
             stde::log::log l;

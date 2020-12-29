@@ -54,13 +54,7 @@ namespace gp {
                     out << "AttachEntity [eid: " << eid << "; vehicle: " << vehicle_eid << "]";
                 }
 
-                /**
-                 * Get the ID associated with the packet's class.
-                 * @return  Packet ID.
-                 */
-                constexpr static int getID() {
-                    return 0x27;
-                }
+                packetID(0x27)
 
                 /**
                  * EID of the entity being attached

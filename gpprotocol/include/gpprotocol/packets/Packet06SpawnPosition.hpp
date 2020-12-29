@@ -53,13 +53,7 @@ namespace gp {
                     out << "SpawnPosition [x: " << x << "; y: " << y << "; z: " << z << "]";
                 }
 
-                /**
-                 * Get the ID associated with the packet's class.
-                 * @return  Packet ID.
-                 */
-                constexpr static int getID() {
-                    return 0x06;
-                }
+                packetID(0x06)
 
                 /**
                  * Spawn X position

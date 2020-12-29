@@ -49,13 +49,7 @@ namespace gp {
                     out << "Ping []";
                 }
 
-                /**
-                 * Get the ID associated with the packet's class.
-                 * @return  Packet ID.
-                 */
-                constexpr static int getID() {
-                    return 0x00;
-                }
+                packetID(0x00)
             };
 
         }

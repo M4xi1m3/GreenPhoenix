@@ -49,13 +49,7 @@ namespace gp {
                     out << "Kick [reason: " << reason << "]";
                 }
 
-                /**
-                 * Get the ID associated with the packet's class.
-                 * @return  Packet ID.
-                 */
-                constexpr static int getID() {
-                    return 0xFF;
-                }
+                packetID(0xFF)
 
                 /**
                  * Reason for the kick

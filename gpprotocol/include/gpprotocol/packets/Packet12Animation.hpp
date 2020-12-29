@@ -52,13 +52,7 @@ namespace gp {
                     out << "Animation [eid: " << +eid << "; animation: " << types::animationName(animation) << "]";
                 }
 
-                /**
-                 * Get the ID associated with the packet's class.
-                 * @return  Packet ID.
-                 */
-                constexpr static int getID() {
-                    return 0x12;
-                }
+                packetID(0x12)
 
                 /**
                  * Entity ID

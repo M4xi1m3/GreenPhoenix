@@ -4,6 +4,27 @@
 #include <ostream>
 #include "stde/streams/data.hpp"
 
+// Not clean but works well enough.
+#define packetID(THE_ID) \
+            /** \
+             * Get the ID associated with the packet's class. \
+             * All Packet **MUST** implement this, as it's used for packet resolution. \
+             * \
+             * @return  Packet ID. \
+             */ \
+            constexpr static uint8_t getID() { \
+                return THE_ID; \
+            } \
+\
+            /** \
+             * ID of the packet, used when sending. \
+             * \
+             * @return  Packet ID.\
+             */ \
+            constexpr virtual uint8_t id() const { \
+                return THE_ID; \
+            }
+
 namespace gp {
     namespace protocol {
         /**
@@ -43,15 +64,7 @@ namespace gp {
              */
             virtual void debug(std::ostream& out) const = 0;
 
-            /**
-             * Get the ID associated with the packet's class.
-             * All Packet **MUST** implement this, as it's used for packet resolution.
-             *
-             * @return  Packet ID.
-             */
-            constexpr static int getID() {
-                return -1;
-            }
+            packetID(0x42)
 
             /**
              * Reads a packet from a stream.

@@ -58,17 +58,11 @@ namespace gp {
                  * @param out   Output stream to write to.
                  */
                 virtual void debug(std::ostream& out) const {
-                    out << "EntityMove [eid: " << eid << "; Mx: " << move_x << "; My: " << move_y << "; Mz: " << move_z << "; yaw: " << yaw << "; pitch: "
-                            << pitch << "]";
+                    out << "EntityMove [eid: " << eid << "; Mx: " << +move_x << "; My: " << +move_y << "; Mz: " << +move_z << "; yaw: " << +yaw << "; pitch: "
+                            << +pitch << "]";
                 }
 
-                /**
-                 * Get the ID associated with the packet's class.
-                 * @return  Packet ID.
-                 */
-                constexpr static int getID() {
-                    return 0x21;
-                }
+                packetID(0x21)
 
                 /**
                  * Relative movement along the X axis.

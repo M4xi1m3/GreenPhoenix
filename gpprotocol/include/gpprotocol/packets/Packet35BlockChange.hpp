@@ -14,7 +14,7 @@ namespace gp {
                 /**
                  * Constructor.
                  */
-                Packet35BlockChange() : x(0), y(0), z(0), id(0), metadata(0) {
+                Packet35BlockChange() : x(0), y(0), z(0), block_id(0), metadata(0) {
 
                 }
 
@@ -34,7 +34,7 @@ namespace gp {
                     y = dis.read_byte();
                     z = dis.read_int();
 
-                    id = dis.read_byte();
+                    block_id = dis.read_byte();
                     metadata = dis.read_byte();
                 }
 
@@ -47,7 +47,7 @@ namespace gp {
                     dos.write_byte(y);
                     dos.write_int(z);
 
-                    dos.write_byte(id);
+                    dos.write_byte(block_id);
                     dos.write_byte(metadata);
                 }
 
@@ -56,16 +56,10 @@ namespace gp {
                  * @param out   Output stream to write to.
                  */
                 virtual void debug(std::ostream& out) const {
-                    out << "BlockChange [x: " << x << "; y: " << +y << "; z: " << z << "; id: " << +id << "; metadata: " << +metadata << "]";
+                    out << "BlockChange [x: " << x << "; y: " << +y << "; z: " << z << "; id: " << +block_id << "; metadata: " << +metadata << "]";
                 }
 
-                /**
-                 * Get the ID associated with the packet's class.
-                 * @return  Packet ID.
-                 */
-                constexpr static int getID() {
-                    return 0x35;
-                }
+                packetID(0x35)
 
                 /**
                  * Block X coordinate
@@ -85,7 +79,7 @@ namespace gp {
                 /**
                  * ID of the new block
                  */
-                int8_t id;
+                int8_t block_id;
 
                 /**
                  * Metadata of the new block

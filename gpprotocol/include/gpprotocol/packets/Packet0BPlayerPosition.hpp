@@ -57,13 +57,7 @@ namespace gp {
                     out << "PlayerPosition [onground: " << +onground << "; x: " << x << "; y: " << y << "; z: " << z << "]";
                 }
 
-                /**
-                 * Get the ID associated with the packet's class.
-                 * @return  Packet ID.
-                 */
-                constexpr static int getID() {
-                    return 0x0B;
-                }
+                packetID(0x0B)
 
                 /**
                  * Position X.

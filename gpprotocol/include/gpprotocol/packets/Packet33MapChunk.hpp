@@ -68,17 +68,11 @@ namespace gp {
                  * @param out   Output stream to write to.
                  */
                 virtual void debug(std::ostream& out) const {
-                    out << "MapChunk [x: " << x << "; y: " << y << "; z: " << z << "; size_x: " << size_x << "; size_y: " << size_y << "; size_z: " << size_z
+                    out << "MapChunk [x: " << x << "; y: " << y << "; z: " << z << "; size_x: " << +size_x << "; size_y: " << +size_y << "; size_z: " << +size_z
                             << "; data: " << data.size() << " bytes]";
                 }
 
-                /**
-                 * Get the ID associated with the packet's class.
-                 * @return  Packet ID.
-                 */
-                constexpr static int getID() {
-                    return 0x33;
-                }
+                packetID(0x33)
 
                 /**
                  * Block X coordinate

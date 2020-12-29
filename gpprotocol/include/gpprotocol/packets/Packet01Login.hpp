@@ -57,13 +57,7 @@ namespace gp {
                     out << "Login [username: " << username << "; password: " << password << "; seed" << +seed << "; dimmension: " << +dimmension << "]";
                 }
 
-                /**
-                 * Get the ID associated with the packet's class.
-                 * @return  Packet ID.
-                 */
-                constexpr static int getID() {
-                    return 0x01;
-                }
+                packetID(0x01)
 
                 /**
                  * Protocol version

@@ -48,10 +48,10 @@ namespace gp {
                         changes[i].y = coords & 0xFF;
                     }
                     for (int i = 0; i < size; i++) {
-                        changes[i].type = dis.read_int();
+                        changes[i].type = dis.read_byte();
                     }
                     for (int i = 0; i < size; i++) {
-                        changes[i].metadata = dis.read_int();
+                        changes[i].metadata = dis.read_byte();
                     }
                 }
 
@@ -84,13 +84,7 @@ namespace gp {
                     out << "MultiBlock [chunk_x: " << chunk_x << "; chunk_z: " << chunk_z << "; changes: " << changes.size() << " elements]";
                 }
 
-                /**
-                 * Get the ID associated with the packet's class.
-                 * @return  Packet ID.
-                 */
-                constexpr static int getID() {
-                    return 0x34;
-                }
+                packetID(0x34)
 
                 /**
                  * Chunk X coordinate

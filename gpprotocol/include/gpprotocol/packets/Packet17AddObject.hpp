@@ -58,13 +58,7 @@ namespace gp {
                     out << "AddObject [eid: " << eid << "; type: " << types::objectName(type) << "; x: " << x << "; y: " << y << "; z: " << z << "]";
                 }
 
-                /**
-                 * Get the ID associated with the packet's class.
-                 * @return  Packet ID.
-                 */
-                constexpr static int getID() {
-                    return 0x17;
-                }
+                packetID(0x17)
 
                 /**
                  * EID of the object

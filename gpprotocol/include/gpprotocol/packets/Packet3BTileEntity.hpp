@@ -32,7 +32,7 @@ namespace gp {
                  */
                 virtual void read(stde::streams::data_istream& dis) {
                     x = dis.read_int();
-                    y = dis.read_byte();
+                    y = dis.read_short();
                     z = dis.read_int();
                     uint16_t size = dis.read_ushort();
                     data.clear();
@@ -46,7 +46,7 @@ namespace gp {
                  */
                 virtual void write(stde::streams::data_ostream& dos) const {
                     dos.write_int(x);
-                    dos.write_byte(y);
+                    dos.write_short(y);
                     dos.write_int(z);
                     dos.write_ushort(data.size());
                     dos.write((char*) data.data(), data.size());
@@ -60,13 +60,7 @@ namespace gp {
                     out << "TileEntity [x: " << x << "; y: " << +y << "; z: " << z << "; data: " << data.size() << " bytes]";
                 }
 
-                /**
-                 * Get the ID associated with the packet's class.
-                 * @return  Packet ID.
-                 */
-                constexpr static int getID() {
-                    return 0x3B;
-                }
+                packetID(0x3B)
 
                 /**
                  * TileEntnty's X position
@@ -76,7 +70,7 @@ namespace gp {
                 /**
                  * TileEntnty's Y position
                  */
-                int8_t y;
+                int16_t y;
 
                 /**
                  * TileEntnty's Z position

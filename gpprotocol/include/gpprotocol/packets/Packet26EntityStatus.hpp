@@ -52,13 +52,7 @@ namespace gp {
                     out << "DestroyEntity [eid: " << eid << "; status: " << types::statusnName(status) << "]";
                 }
 
-                /**
-                 * Get the ID associated with the packet's class.
-                 * @return  Packet ID.
-                 */
-                constexpr static int getID() {
-                    return 0x26;
-                }
+                packetID(0x26)
 
                 /**
                  * EID of the entity

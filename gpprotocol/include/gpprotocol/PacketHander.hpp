@@ -21,9 +21,18 @@ namespace gp {
              * @param p Packet to send
              */
             void send(const Packet& p) {
-                l << stde::log::level::debug << "#" << getID() << " [S->C] " << p << std::endl;
-                m_dos->write_byte(p.getID());
+                m_dos->write_byte(p.id());
                 p.write(*m_dos);
+                m_dos->flush();
+            }
+
+            /**
+             * Send a packet to the connected client
+             * @param p Packet to send
+             */
+            void send(const Packet* p) {
+                m_dos->write_byte(p->id());
+                p->write(*m_dos);
                 m_dos->flush();
             }
 

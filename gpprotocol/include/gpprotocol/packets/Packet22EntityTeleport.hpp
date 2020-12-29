@@ -59,13 +59,7 @@ namespace gp {
                     out << "EntityMove [eid: " << eid << "; x: " << x << "; y: " << y << "; z: " << z << "; yaw: " << yaw << "; pitch: " << pitch << "]";
                 }
 
-                /**
-                 * Get the ID associated with the packet's class.
-                 * @return  Packet ID.
-                 */
-                constexpr static int getID() {
-                    return 0x22;
-                }
+                packetID(0x22)
 
                 /**
                  * Relative movement along the X axis.

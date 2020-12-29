@@ -68,13 +68,7 @@ namespace gp {
                             << "; yaw: " << yaw << "; pitch: " << pitch << "; roll: " << roll << "]";
                 }
 
-                /**
-                 * Get the ID associated with the packet's class.
-                 * @return  Packet ID.
-                 */
-                constexpr static int getID() {
-                    return 0x15;
-                }
+                packetID(0x15)
 
                 /**
                  * Entity ID of the entity

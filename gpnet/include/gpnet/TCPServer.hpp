@@ -134,6 +134,10 @@ namespace gp {
                 m_running = false;
             }
 
+            std::list<T*>* getHandlers() {
+                return &m_handlers;
+            }
+
             stde::net::sock_address m_address;
             stde::net::server_sock m_socket;
             std::atomic<bool> m_running;

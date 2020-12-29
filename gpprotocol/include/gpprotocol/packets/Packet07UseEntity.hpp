@@ -51,13 +51,7 @@ namespace gp {
                     out << "UseEntity [user: " << user << "; target: " << target << "; attack: " << +attack << "]";
                 }
 
-                /**
-                 * Get the ID associated with the packet's class.
-                 * @return  Packet ID.
-                 */
-                constexpr static int getID() {
-                    return 0x07;
-                }
+                packetID(0x07)
 
                 /**
                  * EID of the sender.

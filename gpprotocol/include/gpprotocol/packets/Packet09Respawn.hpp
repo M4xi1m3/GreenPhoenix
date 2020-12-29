@@ -49,13 +49,7 @@ namespace gp {
                     out << "Respawn []";
                 }
 
-                /**
-                 * Get the ID associated with the packet's class.
-                 * @return  Packet ID.
-                 */
-                constexpr static int getID() {
-                    return 0x09;
-                }
+                packetID(0x09)
             };
 
         }

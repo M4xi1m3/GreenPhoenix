@@ -73,13 +73,7 @@ namespace gp {
                     out << "Explosion [x: " << x << "; y: " << y << "; z: " << z << "; radius: " << radius << "; records: " << records.size() << " records]";
                 }
 
-                /**
-                 * Get the ID associated with the packet's class.
-                 * @return  Packet ID.
-                 */
-                constexpr static int getID() {
-                    return 0x3C;
-                }
+                packetID(0x3C)
 
                 /**
                  * Center of the explosion's X coordinate

@@ -61,13 +61,7 @@ namespace gp {
                             << types::directionName(face) << "]";
                 }
 
-                /**
-                 * Get the ID associated with the packet's class.
-                 * @return  Packet ID.
-                 */
-                constexpr static int getID() {
-                    return 0x0E;
-                }
+                packetID(0x0E)
 
                 /**
                  * Status of the diggind

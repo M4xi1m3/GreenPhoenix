@@ -15,7 +15,7 @@ namespace gp {
                 /**
                  * Constructor.
                  */
-                Packet0FPlacement() : id(0), x(0), y(0), z(0), face(types::Direction::UNKNOWN) {
+                Packet0FPlacement() : block_id(0), x(0), y(0), z(0), face(types::Direction::UNKNOWN) {
 
                 }
 
@@ -31,7 +31,7 @@ namespace gp {
                  * @param dis   Input stream.
                  */
                 virtual void read(stde::streams::data_istream& dis) {
-                    id = dis.read_short();
+                    block_id = dis.read_short();
                     x = dis.read_int();
                     y = dis.read_byte();
                     z = dis.read_int();
@@ -43,7 +43,7 @@ namespace gp {
                  * @param dos   Output stream.
                  */
                 virtual void write(stde::streams::data_ostream& dos) const {
-                    dos.write_short(id);
+                    dos.write_short(block_id);
                     dos.write_int(x);
                     dos.write_byte(y);
                     dos.write_int(z);
@@ -55,21 +55,15 @@ namespace gp {
                  * @param out   Output stream to write to.
                  */
                 virtual void debug(std::ostream& out) const {
-                    out << "BlockPlacement [id: " << id << "; x: " << x << "; y: " << y << "; z: " << z << "; face: " << types::directionName(face) << "]";
+                    out << "BlockPlacement [id: " << block_id << "; x: " << x << "; y: " << y << "; z: " << z << "; face: " << types::directionName(face) << "]";
                 }
 
-                /**
-                 * Get the ID associated with the packet's class.
-                 * @return  Packet ID.
-                 */
-                constexpr static int getID() {
-                    return 0x0F;
-                }
+                packetID(0x0F)
 
                 /**
                  * ID of the block to place
                  */
-                int16_t id;
+                int16_t block_id;
 
                 /**
                  * X position of the block to place on

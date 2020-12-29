@@ -62,13 +62,7 @@ namespace gp {
                             << pitch << "]";
                 }
 
-                /**
-                 * Get the ID associated with the packet's class.
-                 * @return  Packet ID.
-                 */
-                constexpr static int getID() {
-                    return 0x0D;
-                }
+                packetID(0x0D)
 
                 /**
                  * Position X.

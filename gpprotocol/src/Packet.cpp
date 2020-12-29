@@ -67,7 +67,7 @@ Packet* Packet::parse(stde::streams::data_istream& dis) {
 
         default:
             std::ostringstream ss;
-            ss << "Unknown packet ID " << id << "!";
+            ss << "Unknown packet ID " << +id << "!";
             throw std::runtime_error(ss.str());
     }
 

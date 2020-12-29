@@ -49,13 +49,7 @@ namespace gp {
                     out << "Time [time: " << time << "]";
                 }
 
-                /**
-                 * Get the ID associated with the packet's class.
-                 * @return  Packet ID.
-                 */
-                constexpr static int getID() {
-                    return 0x04;
-                }
+                packetID(0x04)
 
                 /**
                  * Time of the world

@@ -49,13 +49,7 @@ namespace gp {
                     out << "Player [onground: " << +onground << "]";
                 }
 
-                /**
-                 * Get the ID associated with the packet's class.
-                 * @return  Packet ID.
-                 */
-                constexpr static int getID() {
-                    return 0x0A;
-                }
+                packetID(0x0A)
 
                 /**
                  * If the player is on ground or not.

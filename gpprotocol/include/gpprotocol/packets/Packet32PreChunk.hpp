@@ -53,13 +53,7 @@ namespace gp {
                     out << "PreChunk [x: " << x << "; z: " << z << "; init: " << +init << "]";
                 }
 
-                /**
-                 * Get the ID associated with the packet's class.
-                 * @return  Packet ID.
-                 */
-                constexpr static int getID() {
-                    return 0x32;
-                }
+                packetID(0x32)
 
                 /**
                  * Chunk X coordinate

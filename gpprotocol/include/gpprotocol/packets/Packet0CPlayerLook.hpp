@@ -53,13 +53,7 @@ namespace gp {
                     out << "PlayerLook [onground: " << +onground << "; yaw: " << yaw << "; pitch: " << pitch << "]";
                 }
 
-                /**
-                 * Get the ID associated with the packet's class.
-                 * @return  Packet ID.
-                 */
-                constexpr static int getID() {
-                    return 0x0C;
-                }
+                packetID(0x0C)
 
                 /**
                  * Rotation around the X axis

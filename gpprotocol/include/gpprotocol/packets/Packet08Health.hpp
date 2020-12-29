@@ -46,16 +46,10 @@ namespace gp {
                  * @param out   Output stream to write to.
                  */
                 virtual void debug(std::ostream& out) const {
-                    out << "Health [health: " << health << "]";
+                    out << "Health [health: " << +health << "]";
                 }
 
-                /**
-                 * Get the ID associated with the packet's class.
-                 * @return  Packet ID.
-                 */
-                constexpr static int getID() {
-                    return 0x08;
-                }
+                packetID(0x08)
 
                 /**
                  * Helth value

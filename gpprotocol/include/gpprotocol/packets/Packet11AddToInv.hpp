@@ -54,13 +54,7 @@ namespace gp {
                     out << "AddToInv [id: " << "; count: " << "; damage:" << "]";
                 }
 
-                /**
-                 * Get the ID associated with the packet's class.
-                 * @return  Packet ID.
-                 */
-                constexpr static int getID() {
-                    return 0x11;
-                }
+                packetID(0x11)
 
                 /**
                  * Item to add.

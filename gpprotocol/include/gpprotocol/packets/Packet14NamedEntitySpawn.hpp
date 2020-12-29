@@ -63,13 +63,7 @@ namespace gp {
                             << "; pitch: " << pitch << "; item: " << item_id << "]";
                 }
 
-                /**
-                 * Get the ID associated with the packet's class.
-                 * @return  Packet ID.
-                 */
-                constexpr static int getID() {
-                    return 0x14;
-                }
+                packetID(0x14)
 
                 /**
                  * Player's EID

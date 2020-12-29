@@ -51,13 +51,7 @@ namespace gp {
                     out << "CollectItem [iEID: " << item_eid << ";pEID" << player_eid << "]";
                 }
 
-                /**
-                 * Get the ID associated with the packet's class.
-                 * @return  Packet ID.
-                 */
-                constexpr static int getID() {
-                    return 0x16;
-                }
+                packetID(0x16)
 
                 /**
                  * EID of the picked up item

@@ -49,13 +49,7 @@ namespace gp {
                     out << "Handshake [username: " << username << "]";
                 }
 
-                /**
-                 * Get the ID associated with the packet's class.
-                 * @return  Packet ID.
-                 */
-                constexpr static int getID() {
-                    return 0x02;
-                }
+                packetID(0x02)
 
                 /**
                  * Username

@@ -59,17 +59,11 @@ namespace gp {
                  * @param out   Output stream to write to.
                  */
                 virtual void debug(std::ostream& out) const {
-                    out << "MobSpawn [eid: " << eid << "; type: " << types::mobName(type) << "; x: " << x << "; y: " << y << "; z: " << z << "; yaw: " << yaw
-                            << "; pitch: " << pitch << "]";
+                    out << "MobSpawn [eid: " << eid << "; type: " << types::mobName(type) << "; x: " << x << "; y: " << y << "; z: " << z << "; yaw: " << +yaw
+                            << "; pitch: " << +pitch << "]";
                 }
 
-                /**
-                 * Get the ID associated with the packet's class.
-                 * @return  Packet ID.
-                 */
-                constexpr static int getID() {
-                    return 0x18;
-                }
+                packetID(0x18)
 
                 /**
                  * Entity ID

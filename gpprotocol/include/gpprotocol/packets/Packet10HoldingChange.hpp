@@ -14,7 +14,7 @@ namespace gp {
                 /**
                  * Constructor.
                  */
-                Packet10HlodingChange() : eid(0), id(0) {
+                Packet10HlodingChange() : eid(0), item_id(0) {
 
                 }
 
@@ -31,7 +31,7 @@ namespace gp {
                  */
                 virtual void read(stde::streams::data_istream& dis) {
                     eid = dis.read_int();
-                    id = dis.read_short();
+                    item_id = dis.read_short();
                 }
 
                 /**
@@ -40,7 +40,7 @@ namespace gp {
                  */
                 virtual void write(stde::streams::data_ostream& dos) const {
                     dos.write_int(eid);
-                    dos.write_short(id);
+                    dos.write_short(item_id);
                 }
 
                 /**
@@ -48,16 +48,10 @@ namespace gp {
                  * @param out   Output stream to write to.
                  */
                 virtual void debug(std::ostream& out) const {
-                    out << "HoldingChange [eid: " << eid << "; id: " << id << "]";
+                    out << "HoldingChange [eid: " << eid << "; id: " << item_id << "]";
                 }
 
-                /**
-                 * Get the ID associated with the packet's class.
-                 * @return  Packet ID.
-                 */
-                constexpr static int getID() {
-                    return 0x10;
-                }
+                packetID(0x10)
 
                 /**
                  * Player Entity ID.
@@ -67,7 +61,7 @@ namespace gp {
                 /**
                  * ID of the item.
                  */
-                int16_t id;
+                int16_t item_id;
             };
 
         }

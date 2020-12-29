@@ -79,13 +79,7 @@ namespace gp {
                     out << "Inventory [" << +(int) inventory.type << "]";
                 }
 
-                /**
-                 * Get the ID associated with the packet's class.
-                 * @return  Packet ID.
-                 */
-                constexpr static int getID() {
-                    return 0x05;
-                }
+                packetID(0x05)
 
                 /**
                  * Inventory

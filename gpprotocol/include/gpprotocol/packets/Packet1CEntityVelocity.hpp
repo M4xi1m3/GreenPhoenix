@@ -57,13 +57,7 @@ namespace gp {
                     out << "EntityVelocity [eid: " << eid << "; Vx: " << +speed_x << "; Vy: " << +speed_y << "; Vz: " << +speed_z << "]";
                 }
 
-                /**
-                 * Get the ID associated with the packet's class.
-                 * @return  Packet ID.
-                 */
-                constexpr static int getID() {
-                    return 0x1C;
-                }
+                packetID(0x1C)
 
                 /**
                  * Entity ID

@@ -3,6 +3,7 @@
 
 #include <cstdint>
 #include <exception>
+#include <vector>
 
 #include "Item.hpp"
 
@@ -25,15 +26,14 @@ namespace gp {
                 /**
                  * Constructor
                  */
-                PlayerInventory() : m_size(0), type(PlayerInventoryType::UNKNOWN), m_content(nullptr) {
+                PlayerInventory() : type(PlayerInventoryType::UNKNOWN) {
 
                 }
                 /**
                  * Constructor
                  * @param size  Size of the inventory
                  */
-                PlayerInventory(int16_t size) : m_size(size), type(PlayerInventoryType::UNKNOWN), m_content(new Item[size]) {
-
+                PlayerInventory(int16_t size) : type(PlayerInventoryType::UNKNOWN), m_content(size) {
                 }
 
                 /**
@@ -41,7 +41,7 @@ namespace gp {
                  * @param size  Size of the inventory
                  * @param type  Type of the inventory
                  */
-                PlayerInventory(int16_t size, PlayerInventoryType type) : m_size(size), type(type), m_content(new Item[size]) {
+                PlayerInventory(int16_t size, PlayerInventoryType type) : type(type), m_content(size) {
 
                 }
 
@@ -51,7 +51,7 @@ namespace gp {
                  * @return  The item at index i.
                  */
                 Item operator [](int i) const {
-                    if (i > m_size || m_content == nullptr)
+                    if (i > m_content.size() || i < 0)
                         throw std::out_of_range("Trying to access invalid item slot!");
 
                     return m_content[i];
@@ -63,7 +63,7 @@ namespace gp {
                  * @return  Reference to the item at index i.
                  */
                 Item& operator [](int i) {
-                    if (i > m_size || m_content == nullptr)
+                    if (i > m_content.size() || i < 0)
                         throw std::out_of_range("Trying to access invalid item slot!");
 
                     return m_content[i];
@@ -74,15 +74,13 @@ namespace gp {
                  * @return  The size of the inventory
                  */
                 const int16_t size() const {
-                    return m_size;
+                    return m_content.size();
                 }
 
                 /**
                  * Destructor.
                  */
                 virtual ~PlayerInventory() {
-                    if (m_content != nullptr)
-                        delete[] m_content;
                 }
 
                 /**
@@ -91,8 +89,7 @@ namespace gp {
                  */
                 PlayerInventoryType type;
             private:
-                int16_t m_size;
-                Item *m_content;
+                std::vector<Item> m_content;
 
             };
 

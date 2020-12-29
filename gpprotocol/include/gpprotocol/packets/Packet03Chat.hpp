@@ -49,13 +49,7 @@ namespace gp {
                     out << "Chat [message: " << message << "]";
                 }
 
-                /**
-                 * Get the ID associated with the packet's class.
-                 * @return  Packet ID.
-                 */
-                constexpr static int getID() {
-                    return 0x03;
-                }
+                packetID(0x03)
 
                 /**
                  * Message
