@@ -9,6 +9,11 @@ TCPClient::TCPClient(ProxyPlayer* player, const std::string& ip, int port) : m_p
         false) {
 }
 
+TCPClient::TCPClient(ProxyPlayer* player, const std::string& ip) : m_player(player), m_socket(stde::net::sock_address(ip)), m_is(
+        m_socket), m_os(m_socket), m_dis(m_is, stde::streams::endianconv::big), m_dos(m_os, stde::streams::endianconv::big), m_running(
+        false) {
+}
+
 TCPClient::~TCPClient() {
 
 }

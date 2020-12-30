@@ -7,7 +7,7 @@ using namespace gp::proxy;
 
 stde::log::log ProxyPlayer::l = stde::log::log::get("proxy-player");
 
-ProxyPlayer::ProxyPlayer(ProxyManager* handler) : m_handler(handler) {
+ProxyPlayer::ProxyPlayer(ProxyHandler* handler) : m_handler(handler) {
 
 }
 

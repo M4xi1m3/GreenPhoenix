@@ -1,5 +1,6 @@
 #ifndef INCLUDE_GPPROTOCOL_TYPES_MULTIBLOCK_HPP_
 #define INCLUDE_GPPROTOCOL_TYPES_MULTIBLOCK_HPP_
+/** @file **/
 
 #include <cstdint>
 

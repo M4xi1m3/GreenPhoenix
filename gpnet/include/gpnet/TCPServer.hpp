@@ -27,6 +27,12 @@ namespace gp {
             TCPServer(std::string ip, int port) : m_address(ip, std::to_string(port)), m_socket(m_address), m_running(false), m_mustStop(true), m_handlers(), m_lastId(
                     1) {
             }
+            /**
+             * Initializes a TCP server.
+             * @param ip    IP to bind
+             */
+            TCPServer(std::string ip) : m_address(ip), m_socket(m_address), m_running(false), m_mustStop(true), m_handlers(), m_lastId(1) {
+            }
 
             /**
              * Destructor

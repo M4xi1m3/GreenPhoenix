@@ -1,5 +1,6 @@
 #ifndef INCLUDE_GPPROTOCOL_TYPES_STATUS_HPP_
 #define INCLUDE_GPPROTOCOL_TYPES_STATUS_HPP_
+/** @file **/
 
 #include <cstdint>
 #include <string>
@@ -19,7 +20,7 @@ namespace gp {
              * @param s Status to get the representation of
              * @return  String representation of s
              */
-            std::string statusnName(Status a);
+            std::string statusName(Status s);
         }
     }
 }

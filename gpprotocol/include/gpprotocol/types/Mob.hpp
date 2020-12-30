@@ -1,5 +1,6 @@
 #ifndef INCLUDE_GPPROTOCOL_TYPES_MOB_HPP_
 #define INCLUDE_GPPROTOCOL_TYPES_MOB_HPP_
+/** @file **/
 
 #include <cstdint>
 #include <string>
@@ -27,11 +28,11 @@ namespace gp {
             };
 
             /**
-             * Get string representation of a living
-             * @param l Living to get string representation of
-             * @return  String representation of l
+             * Get string representation of a mob
+             * @param m Mob to get string representation of
+             * @return  String representation of m
              */
-            std::string mobName(Mob o);
+            std::string mobName(Mob m);
         }
     }
 }

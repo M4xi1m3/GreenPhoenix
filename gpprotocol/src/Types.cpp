@@ -96,8 +96,8 @@ std::string gp::protocol::types::objectName(Object o) {
     }
 }
 
-std::string gp::protocol::types::mobName(Mob l) {
-    switch (l) {
+std::string gp::protocol::types::mobName(Mob m) {
+    switch (m) {
         case Mob::CREEPER:
             return "CREEPER";
         case Mob::SKELETON:
@@ -127,8 +127,8 @@ std::string gp::protocol::types::mobName(Mob l) {
     }
 }
 
-std::string gp::protocol::types::statusnName(Status a) {
-    switch (a) {
+std::string gp::protocol::types::statusName(Status s) {
+    switch (s) {
         case Status::UNK2:
             return "UNK2";
         case Status::UNK3:

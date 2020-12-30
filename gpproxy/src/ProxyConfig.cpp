@@ -3,17 +3,27 @@
 using namespace gp::proxy;
 
 stde::conf::properties ProxyConfig::properties;
+std::string ProxyConfig::ip = "0.0.0.0";
+int ProxyConfig::port = 25565;
 
 void ProxyConfig::load(const std::string& file) {
     std::ifstream in(file);
     if (in) {
         properties.load(in);
+
+        ip = getStringOrDefault("proxy.ip", "0.0.0.0");
+        port = getIntOrDefault("proxy.port", 25565);
+    } else {
+        save(file);
     }
 }
 
 void ProxyConfig::save(const std::string& file) {
     std::ofstream out(file);
     if (out) {
+        properties["proxy.ip"] = ip;
+        properties["proxy.port"] = std::to_string(port);
+
         properties.save(out);
     }
 }

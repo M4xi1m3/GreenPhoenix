@@ -1,5 +1,6 @@
 #ifndef INCLUDE_GPPROTOCOL_TYPES_ITEM_HPP_
 #define INCLUDE_GPPROTOCOL_TYPES_ITEM_HPP_
+/** @file **/
 
 #include <cstdint>
 

@@ -1,17 +1,26 @@
 #ifndef INCLUDE_GPPROXY_PROXY_HPP_
 #define INCLUDE_GPPROXY_PROXY_HPP_
 
-#include <gpproxy/ProxyManager.hpp>
+#include <gpproxy/ProxyHandler.hpp>
 #include "gpnet/TCPServer.hpp"
 
 
 namespace gp {
     namespace proxy {
 
+        /**
+         * GreenPhornix's Proxy. Singleton.
+         */
         class Proxy {
         public:
+            /**
+             * Destructor
+             */
             virtual ~Proxy();
 
+            /**
+             * Starts the proxy.
+             */
             void run();
 
             /**
@@ -26,7 +35,7 @@ namespace gp {
             void operator=(Proxy const&) = delete;
         private:
             Proxy();
-            net::TCPServer<ProxyManager>* server = nullptr;
+            net::TCPServer<ProxyHandler>* server = nullptr;
 
         };
 

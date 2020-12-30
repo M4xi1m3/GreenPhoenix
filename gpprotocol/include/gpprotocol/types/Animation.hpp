@@ -1,5 +1,6 @@
 #ifndef INCLUDE_GPPROTOCOL_TYPES_ANIMATION_HPP_
 #define INCLUDE_GPPROTOCOL_TYPES_ANIMATION_HPP_
+/** @file **/
 
 #include <cstdint>
 #include <string>

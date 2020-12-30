@@ -10,8 +10,8 @@ Proxy::~Proxy() {
 }
 
 void Proxy::run() {
-    ProxyConfig::load("server.properties");
-    server = new net::TCPServer<ProxyManager>(ProxyConfig::getStringOrDefault("ip", "0.0.0.0"), ProxyConfig::getIntOrDefault("port", 25565));
+    ProxyConfig::load("proxy.properties");
+    server = new net::TCPServer<ProxyHandler>(ProxyConfig::ip, ProxyConfig::port);
     server->start();
 
     // TODO: True console.
@@ -19,4 +19,5 @@ void Proxy::run() {
     std::getline(std::cin, a);
 
     server->stop();
+    ProxyConfig::save("proxy.properties");
 }
