@@ -21,7 +21,7 @@
              * \
              * @return  Packet ID.\
              */ \
-            constexpr virtual uint8_t id() const { \
+            virtual uint8_t id() const { \
                 return THE_ID; \
             }
 
