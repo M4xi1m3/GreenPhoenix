@@ -4,6 +4,7 @@
 #include "gpprotocol/ProtocolHandler.hpp"
 #include "stde/log/log.hpp"
 #include <iostream>
+#include <mutex>
 
 namespace gp {
     namespace protocol {
@@ -50,6 +51,7 @@ namespace gp {
             void close() {
                 m_sock->shutdown();
                 m_sock->close();
+                closed();
             }
 
             /**
@@ -62,6 +64,11 @@ namespace gp {
              * Called when server is stopping.
              */
             virtual void stop() = 0;
+
+            /**
+             * Called when the connection with the client is closed.
+             */
+            virtual void closed() = 0;
         protected:
             /**
              * Logger

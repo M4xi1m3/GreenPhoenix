@@ -64,8 +64,8 @@ namespace gp {
                  * @param out   Output stream to write to.
                  */
                 virtual void debug(std::ostream& out) const {
-                    out << "PickupSpawn [eid: " << eid << "; id: " << item.id << "; count: " << item.count << "; x: " << x << "; y: " << y << "; z:" << z
-                            << "; yaw: " << yaw << "; pitch: " << pitch << "; roll: " << roll << "]";
+                    out << "PickupSpawn [eid: " << eid << "; id: " << +item.id << "; count: " << +item.count << "; x: " << x << "; y: " << y << "; z:" << z
+                            << "; yaw: " << +yaw << "; pitch: " << +pitch << "; roll: " << +roll << "]";
                 }
 
                 packetID(0x15)

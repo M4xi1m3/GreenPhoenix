@@ -40,7 +40,9 @@ namespace gp {
                  * @param dos   Output stream.
                  */
                 virtual void write(stde::streams::data_ostream& dos) const {
-
+                    dos.write_int(user);
+                    dos.write_int(target);
+                    dos.write_bool(attack);
                 }
 
                 /**

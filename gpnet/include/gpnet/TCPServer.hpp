@@ -74,6 +74,14 @@ namespace gp {
                 m_thread.join();
             }
 
+            /**
+             * Get all handlers connected
+             * @return  List of handlers
+             */
+            std::list<T*>* getHandlers() {
+                return &m_handlers;
+            }
+
         private:
             /**
              * Internal method running in a separate thread
@@ -103,6 +111,7 @@ namespace gp {
                         if (e.code().value() != EAGAIN && e.code().value() != EWOULDBLOCK)
                             l << stde::log::level::error << e.what() << std::endl;
                     }
+
                     try {
                         // Remove and delete handlers which are done.
                         for (auto i = m_handlers.begin(); i != m_handlers.end();) {
@@ -132,10 +141,6 @@ namespace gp {
                 }
 
                 m_running = false;
-            }
-
-            std::list<T*>* getHandlers() {
-                return &m_handlers;
             }
 
             stde::net::sock_address m_address;

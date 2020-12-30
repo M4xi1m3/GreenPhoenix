@@ -52,6 +52,7 @@ namespace gp {
                         break;
                     }
                 }
+                handler.closed();
                 m_socket.close();
             }
 

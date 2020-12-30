@@ -52,6 +52,7 @@ namespace gp {
                     dos.write_int(z);
                     dos.write_byte(yaw);
                     dos.write_byte(pitch);
+                    dos.write_short(item_id);
                 }
 
                 /**
@@ -59,8 +60,8 @@ namespace gp {
                  * @param out   Output stream to write to.
                  */
                 virtual void debug(std::ostream& out) const {
-                    out << "NamedEntitySpawn [eid :" << eid << "; name: " << name << "; x: " << x << "; y: " << y << "; z: " << z << "; yaw: " << yaw
-                            << "; pitch: " << pitch << "; item: " << item_id << "]";
+                    out << "NamedEntitySpawn [eid :" << eid << "; name: " << name << "; x: " << x << "; y: " << y << "; z: " << z << "; yaw: " << +yaw
+                            << "; pitch: " << +pitch << "; item: " << item_id << "]";
                 }
 
                 packetID(0x14)

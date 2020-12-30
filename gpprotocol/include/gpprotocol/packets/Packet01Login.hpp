@@ -54,7 +54,7 @@ namespace gp {
                  * @param out   Output stream to write to.
                  */
                 virtual void debug(std::ostream& out) const {
-                    out << "Login [username: " << username << "; password: " << password << "; seed" << +seed << "; dimmension: " << +dimmension << "]";
+                    out << "Login [version: " << version << "; username: " << username << "; password: " << password << "; seed: " << seed << "; dimmension: " << +dimmension << "]";
                 }
 
                 packetID(0x01)
