@@ -16,16 +16,12 @@ ProxyPlayer::~ProxyPlayer() {
 
 void ProxyPlayer::sendPacket(protocol::Packet& packet) {
     const std::lock_guard<std::recursive_mutex> lock(m_mutex);
-    m_handler->m_dos.write_byte(packet.id());
-    packet.write(m_handler->m_dos);
-    m_handler->m_dos.flush();
+    packet.send(m_handler->m_dos);
 }
 
 void ProxyPlayer::sendPacket(protocol::Packet* packet) {
     const std::lock_guard<std::recursive_mutex> lock(m_mutex);
-    m_handler->m_dos.write_byte(packet->id());
-    packet->write(m_handler->m_dos);
-    m_handler->m_dos.flush();
+    packet->send(m_handler->m_dos);
 }
 
 void ProxyPlayer::kick(const std::string& reason) {
@@ -41,13 +37,13 @@ void ProxyPlayer::sendChat(const std::string& message) {
 }
 
 void ProxyPlayer::handleCS(protocol::Packet* packet) {
-    // l << stde::log::level::debug << "[C->S]#" << m_handler->getID() << " " << packet << std::endl;
+    l << stde::log::level::debug << "[C->S]#" << m_handler->getID() << " " << packet << std::endl;
 
     m_handler->m_client->sendPacket(packet);
 }
 
 void ProxyPlayer::handleSC(protocol::Packet* packet) {
-    // l << stde::log::level::debug << "[S->C]#" << m_handler->getID() << " " << packet << std::endl;
+    l << stde::log::level::debug << "[S->C]#" << m_handler->getID() << " " << packet << std::endl;
 
     sendPacket(packet);
 }

@@ -5,6 +5,7 @@
 #include "stde/net/sock.hpp"
 #include "stde/net/sockaddress.hpp"
 #include "stde/streams/data.hpp"
+#include "stde/log/log.hpp"
 
 #include "gpprotocol/Packet.hpp"
 
@@ -72,6 +73,8 @@ namespace gp {
             std::recursive_mutex m_mutex;
             std::atomic<bool> m_running;
             std::thread m_thread;
+
+            static stde::log::log l;
 
             void run();
         };

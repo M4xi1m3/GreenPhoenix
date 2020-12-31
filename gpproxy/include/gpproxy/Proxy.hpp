@@ -3,6 +3,7 @@
 
 #include <gpproxy/ProxyHandler.hpp>
 #include "gpnet/TCPServer.hpp"
+#include "gpcommands/Console.hpp"
 
 
 namespace gp {
@@ -24,6 +25,11 @@ namespace gp {
             void run();
 
             /**
+             * Stops the proxy.
+             */
+            void stop();
+
+            /**
              * Get instance.
              * @return  Instance of the proxy.
              */
@@ -36,6 +42,7 @@ namespace gp {
         private:
             Proxy();
             net::TCPServer<ProxyHandler>* server = nullptr;
+            gp::commands::Console console;
 
         };
 

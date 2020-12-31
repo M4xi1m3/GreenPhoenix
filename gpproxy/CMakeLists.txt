@@ -12,10 +12,11 @@ set(GPPROXY_HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/include)
 target_include_directories(gpproxy PUBLIC ${STDE_HEADERS})
 target_include_directories(gpproxy PUBLIC ${GPNET_HEADERS})
 target_include_directories(gpproxy PUBLIC ${GPPROTOCOL_HEADERS})
+target_include_directories(gpproxy PUBLIC ${GPCOMMANDS_HEADERS})
 target_include_directories(gpproxy PUBLIC ${GPPROXY_HEADERS})
 
 # Add STDE lib
-target_link_libraries(gpproxy gpprotocol gpnet stde)
+target_link_libraries(gpproxy gpprotocol gpnet gpcommands stde)
 
 # Set header path for parent scope.
 set(GPPROXY_HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/include PARENT_SCOPE)

@@ -73,6 +73,11 @@ Packet* Packet::parse(stde::streams::data_istream& dis) {
 
     return nullptr;
 }
+void Packet::send(stde::streams::data_ostream& dos) {
+    dos.write_ubyte(id());
+    write(dos);
+    dos.flush();
+}
 
 std::ostream& operator<<(std::ostream& os, gp::protocol::Packet const& p) {
     p.debug(os);

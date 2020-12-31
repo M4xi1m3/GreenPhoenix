@@ -73,6 +73,12 @@ namespace gp {
              */
             static Packet* parse(stde::streams::data_istream& dis);
 
+            /**
+             * Writes a whole packet to dos and flushes it
+             * @param dos   Stream to write to.
+             */
+            void send(stde::streams::data_ostream& dos);
+
         };
     }
 }

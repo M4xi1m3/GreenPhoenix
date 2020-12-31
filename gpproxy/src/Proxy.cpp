@@ -1,6 +1,8 @@
 #include "gpproxy/Proxy.hpp"
 #include "gpproxy/ProxyConfig.hpp"
 
+#include "gpproxy/commands/StopCommand.hpp"
+
 using namespace gp::proxy;
 
 Proxy::Proxy() {
@@ -14,10 +16,13 @@ void Proxy::run() {
     server = new net::TCPServer<ProxyHandler>(ProxyConfig::ip, ProxyConfig::port);
     server->start();
 
-    // TODO: True console.
-    std::string a;
-    std::getline(std::cin, a);
+    console.addCommand(new commands::StopCommand());
+    console.run(std::cin);
+}
 
+void Proxy::stop() {
     server->stop();
     ProxyConfig::save("proxy.properties");
+    console.stop();
+    console.clean();
 }

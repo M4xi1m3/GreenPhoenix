@@ -2,6 +2,7 @@
 #define INCLUDE_GPPROXY_PROXYCONFIG_HPP_
 
 #include "stde/conf/properties.hpp"
+#include "stde/log/log.hpp"
 #include <fstream>
 #include <exception>
 
@@ -37,6 +38,21 @@ namespace gp {
              * Proxy's port
              */
             static int port;
+
+            /**
+             * Name of the default server
+             */
+            static std::string default_server;
+
+            /**
+             * File to load server list from
+             */
+            static std::string server_file;
+
+            /**
+             * List of servers.
+             */
+            static stde::conf::properties server_list;
         private:
 
             /**
@@ -56,6 +72,8 @@ namespace gp {
             static int getIntOrDefault(std::string key, int def);
 
             static stde::conf::properties properties;
+
+            static stde::log::log l;
         };
 
     }
