@@ -114,8 +114,6 @@ namespace gp {
                             handler->start();
                         }
                     } catch (const std::system_error &e) {
-                        if (e.code().value() != EAGAIN && e.code().value() != EWOULDBLOCK)
-                            l << stde::log::level::error << e.what() << std::endl;
                     }
 
                     try {
