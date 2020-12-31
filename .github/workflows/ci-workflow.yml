@@ -44,7 +44,7 @@ jobs:
     - name: Upload bin
       uses: actions/upload-artifact@master
       with:
-        name: bin-${{runner.workspace}}
+        name: bin-${{matrix.os}}
         path: ${{runner.workspace}}/build/bin
   doc:
     # Build doxygen html doc and upload it.
