@@ -57,6 +57,7 @@ void ProxyPlayer::swap(std::string ip) {
     m_swapping = true;
     m_handler->m_client->close();
     unloadEntities();
+    delete m_handler->m_client;
     m_handler->m_client = new TCPClient(m_handler, this, ip);
     m_handler->m_client->start();
     protocol::packets::Packet02Handshake handshake;
