@@ -61,8 +61,6 @@ namespace gp {
                             << types::directionName(face) << "]";
                 }
 
-                packetID(0x0E)
-
                 /**
                  * Status of the diggind
                  */
@@ -87,6 +85,8 @@ namespace gp {
                  * Face the player is digging
                  */
                 types::Direction face;
+
+                packetID(0x0E)
             };
 
         }

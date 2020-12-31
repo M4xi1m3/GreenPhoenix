@@ -2,6 +2,8 @@
 #include "gpproxy/ProxyConfig.hpp"
 
 #include "gpproxy/commands/StopCommand.hpp"
+#include "gpproxy/commands/ConfigCommand.hpp"
+#include "gpproxy/commands/ServersCommand.hpp"
 
 using namespace gp::proxy;
 
@@ -17,6 +19,8 @@ void Proxy::run() {
     server->start();
 
     console.addCommand(new commands::StopCommand());
+    console.addCommand(new commands::ConfigCommand());
+    console.addCommand(new commands::ServersCommand());
     console.run(std::cin);
 }
 

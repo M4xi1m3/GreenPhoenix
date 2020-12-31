@@ -31,7 +31,6 @@ namespace gp {
              * Constructor
              * @param player
              * @param ip
-             * @param por
              */
             TCPClient(ProxyPlayer* player, const std::string& ip);
 

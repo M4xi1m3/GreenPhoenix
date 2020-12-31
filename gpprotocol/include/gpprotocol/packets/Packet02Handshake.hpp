@@ -49,12 +49,12 @@ namespace gp {
                     out << "Handshake [username: " << username << "]";
                 }
 
-                packetID(0x02)
-
                 /**
                  * Username
                  */
                 std::string username;
+
+                packetID(0x02)
             };
         }
     }

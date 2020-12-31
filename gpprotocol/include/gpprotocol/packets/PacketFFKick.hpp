@@ -49,12 +49,12 @@ namespace gp {
                     out << "Kick [reason: " << reason << "]";
                 }
 
-                packetID(0xFF)
-
                 /**
                  * Reason for the kick
                  */
                 std::string reason;
+
+                packetID(0xFF)
             };
         }
     }

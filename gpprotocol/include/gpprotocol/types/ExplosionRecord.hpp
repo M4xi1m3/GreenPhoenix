@@ -7,6 +7,9 @@
 namespace gp {
     namespace protocol {
         namespace types {
+            /**
+             * Contains information about an explosion
+             */
             struct ExplosionRecord {
                 /**
                  * X offset

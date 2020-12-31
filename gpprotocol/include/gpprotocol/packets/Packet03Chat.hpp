@@ -49,12 +49,12 @@ namespace gp {
                     out << "Chat [message: " << message << "]";
                 }
 
-                packetID(0x03)
-
                 /**
                  * Message
                  */
                 std::string message;
+
+                packetID(0x03)
             };
 
         }

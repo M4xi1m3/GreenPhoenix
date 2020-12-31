@@ -54,12 +54,12 @@ namespace gp {
                     out << "AddToInv [id: " << "; count: " << "; damage:" << "]";
                 }
 
-                packetID(0x11)
-
                 /**
                  * Item to add.
                  */
                 types::Item item;
+
+                packetID(0x11)
             };
 
         }

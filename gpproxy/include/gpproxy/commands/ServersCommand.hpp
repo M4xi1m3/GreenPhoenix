@@ -1,19 +1,18 @@
-#ifndef INCLUDE_GPPROXY_COMMANDS_STOPCOMMAND_HPP_
-#define INCLUDE_GPPROXY_COMMANDS_STOPCOMMAND_HPP_
+#ifndef INCLUDE_GPPROXY_COMMANDS_SERVERSCOMMAND_HPP_
+#define INCLUDE_GPPROXY_COMMANDS_SERVERSCOMMAND_HPP_
 
 #include "gpcommands/Command.hpp"
 
 namespace gp {
     namespace proxy {
         namespace commands {
-
             /**
-             * Command to stop the server
+             * Command to get list of servers
              */
-            class StopCommand: public gp::commands::Command {
+            class ServersCommand: public gp::commands::Command {
             public:
-                StopCommand();
-                virtual ~StopCommand();
+                ServersCommand();
+                virtual ~ServersCommand();
 
                 /**
                  * Handle the commands
@@ -27,7 +26,7 @@ namespace gp {
                  * @return  The name of the command
                  */
                 virtual std::string getName() {
-                    return "stop";
+                    return "servers";
                 }
 
                 /**

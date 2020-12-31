@@ -79,12 +79,12 @@ namespace gp {
                     out << "Inventory [" << +(int) inventory.type << "]";
                 }
 
-                packetID(0x05)
-
                 /**
                  * Inventory
                  */
                 types::PlayerInventory inventory;
+
+                packetID(0x05)
             };
 
         }

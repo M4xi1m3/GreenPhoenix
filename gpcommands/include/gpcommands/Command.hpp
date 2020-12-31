@@ -1,6 +1,7 @@
 #ifndef INCLUDE_GPCOMMANDS_COMMAND_HPP_
 #define INCLUDE_GPCOMMANDS_COMMAND_HPP_
 
+#include "stde/log/log.hpp"
 #include <vector>
 #include <string>
 
@@ -40,6 +41,11 @@ namespace gp {
              * @return  Usage of the command.
              */
             virtual std::string getUsage() = 0;
+        protected:
+            /**
+             * Logger
+             */
+            static stde::log::log l;
         };
 
     }

@@ -7,6 +7,9 @@
 namespace gp {
     namespace protocol {
         namespace types {
+            /**
+             * Contains information about a multiblock change
+             */
             struct MultiBlock {
                 /**
                  * X position inside of the chunk

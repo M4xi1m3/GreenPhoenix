@@ -8,6 +8,9 @@
 
 namespace gp {
     namespace protocol {
+        /**
+         * Handler for packets.
+         */
         class PacketHandler {
         public:
             PacketHandler() : id(0), m_sock(nullptr), m_dos(nullptr), l(stde::log::log::get("protocol")) {
