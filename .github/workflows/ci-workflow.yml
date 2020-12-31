@@ -41,6 +41,11 @@ jobs:
       shell: bash
       # Execute the build.  You can specify a specific target with "--target <NAME>"
       run: cmake --build . --config $BUILD_TYPE
+    - name: Upload bin
+      uses: actions/upload-artifact@master
+      with:
+        name: bin-${{runner.workspace}}
+        path: ${{runner.workspace}}/build/bin
   doc:
     # Build doxygen html doc and upload it.
     runs-on: ubuntu-latest
