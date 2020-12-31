@@ -7,6 +7,8 @@
 #include "stde/streams/sock.hpp"
 #include "stde/streams/data.hpp"
 
+#include <iostream>
+
 namespace gp {
     namespace net {
         /**

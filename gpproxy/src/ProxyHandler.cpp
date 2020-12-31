@@ -1,5 +1,6 @@
 #include <gpproxy/ProxyHandler.hpp>
 #include "gpprotocol/Packet.hpp"
+#include "gpproxy/ProxyConfig.hpp"
 
 using namespace gp::proxy;
 
@@ -14,14 +15,11 @@ void ProxyHandler::handle() {
     m_player = new ProxyPlayer(this);
 
     try {
-        m_client = new TCPClient(m_player, "127.0.0.1:25566");
+        m_client = new TCPClient(this, m_player, ProxyConfig::server_list.at(ProxyConfig::default_server));
         m_client->start();
 
-        while (m_running) {
+        while (m_running && !m_dis.eof()) {
             try {
-                if (m_dis.eof())
-                    break;
-
                 protocol::Packet *packet = protocol::Packet::parse(m_dis);
 
                 m_player->handleCS(packet);

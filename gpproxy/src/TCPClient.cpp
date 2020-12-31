@@ -6,13 +6,13 @@ using namespace gp::proxy;
 
 stde::log::log TCPClient::l = stde::log::log::get("tcp-client");
 
-TCPClient::TCPClient(ProxyPlayer* player, const std::string& ip, int port) : m_player(player), m_socket(stde::net::sock_address(ip, std::to_string(port))), m_is(
-        m_socket), m_os(m_socket), m_dis(m_is, stde::streams::endianconv::big), m_dos(m_os, stde::streams::endianconv::big), m_running(
-        false) {
+TCPClient::TCPClient(ProxyHandler* handler, ProxyPlayer* player, const std::string& ip, int port) : m_handler(handler), m_player(player), m_socket(
+        stde::net::sock_address(ip, std::to_string(port))), m_is(m_socket), m_os(m_socket), m_dis(m_is, stde::streams::endianconv::big), m_dos(m_os,
+        stde::streams::endianconv::big), m_running(false) {
 }
 
-TCPClient::TCPClient(ProxyPlayer* player, const std::string& ip) : m_player(player), m_socket(stde::net::sock_address(ip)), m_is(
-        m_socket), m_os(m_socket), m_dis(m_is, stde::streams::endianconv::big), m_dos(m_os, stde::streams::endianconv::big), m_running(
+TCPClient::TCPClient(ProxyHandler* handler, ProxyPlayer* player, const std::string& ip) : m_handler(handler), m_player(player), m_socket(
+        stde::net::sock_address(ip)), m_is(m_socket), m_os(m_socket), m_dis(m_is, stde::streams::endianconv::big), m_dos(m_os, stde::streams::endianconv::big), m_running(
         false) {
 }
 
@@ -61,13 +61,15 @@ void TCPClient::run() {
             m_player->handleSC(packet);
 
             delete packet;
-
         }
     } catch (std::exception &e) {
-        try {
-            m_player->kick("Exception: " + std::string(e.what()));
-        } catch (std::exception &e2) {
+        if (!m_player->m_swapping) {
+            m_handler->stop();
+            try {
+                m_player->kick("Exception: " + std::string(e.what()));
+            } catch (std::exception &e2) {
 
+            }
         }
     }
 }

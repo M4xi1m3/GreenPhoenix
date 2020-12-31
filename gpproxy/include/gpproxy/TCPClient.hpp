@@ -1,6 +1,7 @@
 #ifndef INCLUDE_GPPROXY_TCPCLIENT_HPP_
 #define INCLUDE_GPPROXY_TCPCLIENT_HPP_
 
+#include "gpproxy/ProxyHandler.hpp"
 #include "gpproxy/ProxyPlayer.hpp"
 #include "stde/net/sock.hpp"
 #include "stde/net/sockaddress.hpp"
@@ -25,14 +26,14 @@ namespace gp {
              * @param ip
              * @param port
              */
-            TCPClient(ProxyPlayer* player, const std::string& ip, int port);
+            TCPClient(ProxyHandler* handler, ProxyPlayer* player, const std::string& ip, int port);
 
             /**
              * Constructor
              * @param player
              * @param ip
              */
-            TCPClient(ProxyPlayer* player, const std::string& ip);
+            TCPClient(ProxyHandler* handler, ProxyPlayer* player, const std::string& ip);
 
             /**
              * Destructor
@@ -61,6 +62,7 @@ namespace gp {
              */
             void start();
         private:
+            ProxyHandler* m_handler;
             ProxyPlayer *m_player;
             stde::net::sock m_socket;
 

@@ -11,6 +11,7 @@ namespace gp {
 #include "gpprotocol/Packet.hpp"
 #include "stde/log/log.hpp"
 #include <mutex>
+#include <unordered_set>
 
 namespace gp {
     namespace proxy {
@@ -66,9 +67,29 @@ namespace gp {
              * @param packet    Packet to handle
              */
             void handleSC(protocol::Packet* packet);
+
+            /**
+             * Connects client to other server
+             * @param ip    IP to connect to
+             */
+            void swap(std::string ip);
+
+            /**
+             * Name of the player
+             */
+            std::string name;
+
+            /**
+             * Wether or not the player is in the swapping state.
+             */
+            std::atomic<bool> m_swapping;
         private:
             ProxyHandler *m_handler;
+            std::unordered_set<int32_t> entities;
             static stde::log::log l;
+
+            void unloadEntities();
+            void handleCommand(std::string command);
 
             std::recursive_mutex m_mutex;
         };
