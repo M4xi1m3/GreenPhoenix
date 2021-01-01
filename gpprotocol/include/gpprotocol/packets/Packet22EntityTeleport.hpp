@@ -56,7 +56,7 @@ namespace gp {
                  * @param out   Output stream to write to.
                  */
                 virtual void debug(std::ostream& out) const {
-                    out << "EntityMove [eid: " << eid << "; x: " << x << "; y: " << y << "; z: " << z << "; yaw: " << yaw << "; pitch: " << pitch << "]";
+                    out << "EntityTeleport [eid: " << eid << "; x: " << x << "; y: " << y << "; z: " << z << "; yaw: " << yaw << "; pitch: " << pitch << "]";
                 }
 
                 packetID(0x22)

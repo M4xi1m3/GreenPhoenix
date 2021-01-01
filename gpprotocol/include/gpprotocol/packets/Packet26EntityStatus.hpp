@@ -49,7 +49,7 @@ namespace gp {
                  * @param out   Output stream to write to.
                  */
                 virtual void debug(std::ostream& out) const {
-                    out << "DestroyEntity [eid: " << eid << "; status: " << types::statusName(status) << "]";
+                    out << "EntityStatus [eid: " << eid << "; status: " << types::statusName(status) << "]";
                 }
 
                 packetID(0x26)

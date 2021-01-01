@@ -12,7 +12,7 @@ namespace gp {
              * Represents an entity status
              */
             enum class Status : int8_t {
-                UNKNOWN = -1, UNK2 = 2, UNK3 = 3, UNK4 = 4, UNK5 = 5
+                UNKNOWN = -1, DAMAGE = 2, DEATH = 3, PRIMED = 4, NOT_PRIMED = 5
             };
 
             /**

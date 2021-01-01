@@ -58,7 +58,7 @@ namespace gp {
                  * @param out   Output stream to write to.
                  */
                 virtual void debug(std::ostream& out) const {
-                    out << "EntityMove [eid: " << eid << "; Mx: " << +move_x << "; My: " << +move_y << "; Mz: " << +move_z << "; yaw: " << +yaw << "; pitch: "
+                    out << "EntityMoveLook [eid: " << eid << "; Mx: " << +move_x << "; My: " << +move_y << "; Mz: " << +move_z << "; yaw: " << +yaw << "; pitch: "
                             << +pitch << "]";
                 }
 

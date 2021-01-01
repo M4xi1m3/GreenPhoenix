@@ -56,18 +56,18 @@ std::string gp::protocol::types::animationName(Animation a) {
             return "SWING";
         case Animation::DEATH:
             return "DEATH";
-        case Animation::UNK100:
-            return "UNK100";
-        case Animation::UNK101:
-            return "UNK101";
-        case Animation::UNK102:
-            return "UNK102";
-        case Animation::UNK103:
-            return "UNK103";
-        case Animation::UNK104:
-            return "UNK104";
-        case Animation::UNK105:
-            return "UNK105";
+        case Animation::BOAT:
+            return "BOAT";
+        case Animation::NOT_BOAT:
+            return "NOT_BOAT";
+        case Animation::FIRE:
+            return "FIRE";
+        case Animation::NOT_FIRE:
+            return "NOT_FIRE";
+        case Animation::CROUCHING:
+            return "CROUCHING";
+        case Animation::NOT_CROUCHING:
+            return "NOT_CROUCHING";
         default:
             return "UNKNOWN";
     }
@@ -129,14 +129,14 @@ std::string gp::protocol::types::mobName(Mob m) {
 
 std::string gp::protocol::types::statusName(Status s) {
     switch (s) {
-        case Status::UNK2:
-            return "UNK2";
-        case Status::UNK3:
-            return "UNK3";
-        case Status::UNK4:
-            return "UNK4";
-        case Status::UNK5:
-            return "UNK5";
+        case Status::DAMAGE:
+            return "DAMAGE";
+        case Status::DEATH:
+            return "DEATH";
+        case Status::PRIMED:
+            return "PRIMED";
+        case Status::NOT_PRIMED:
+            return "NOT_PRIMED";
         default:
             return "UNKNOWN";
     }

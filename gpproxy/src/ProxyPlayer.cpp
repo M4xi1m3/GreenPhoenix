@@ -135,7 +135,7 @@ void ProxyPlayer::handleSC(protocol::Packet* packet) {
 
     if (m_swapping) {
         if (packet->id() == 0x02) {
-            protocol::packets::Packet02Handshake* handshake = dynamic_cast<protocol::packets::Packet02Handshake*>(packet);
+            protocol::packets::Packet02Handshake *handshake = dynamic_cast<protocol::packets::Packet02Handshake*>(packet);
 
             if (handshake->username == "-") {
                 protocol::packets::Packet01Login login;

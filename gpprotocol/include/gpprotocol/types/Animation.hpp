@@ -14,7 +14,7 @@ namespace gp {
             enum class Animation : int8_t {
                 NONE = 0, SWING = 1, DEATH = 2,
 
-                UNK100 = 100, UNK101 = 101, UNK102 = 102, UNK103 = 103, UNK104 = 104, UNK105 = 105
+                BOAT = 100, NOT_BOAT = 101, FIRE = 102, NOT_FIRE = 103, CROUCHING = 104, NOT_CROUCHING = 105
             };
 
             /**
