@@ -56,10 +56,10 @@ std::string gp::protocol::types::animationName(Animation a) {
             return "SWING";
         case Animation::DEATH:
             return "DEATH";
-        case Animation::BOAT:
-            return "BOAT";
-        case Animation::NOT_BOAT:
-            return "NOT_BOAT";
+        case Animation::SITTING:
+            return "SITTING";
+        case Animation::NOT_SITTING:
+            return "NOT_SITTING";
         case Animation::FIRE:
             return "FIRE";
         case Animation::NOT_FIRE:

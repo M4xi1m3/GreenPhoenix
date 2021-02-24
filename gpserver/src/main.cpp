@@ -4,17 +4,12 @@
 #include "stde/log/log.hpp"
 #include "stde/net/init.hpp"
 
+#include "gpworld/Chunk.hpp"
+
 int main(int argc, char** argv) {
-    stde::net::init();
+    std::ifstream f("world/0/0/c.0.0.dat");
+    gp::world::Chunk c(f);
 
-    // gp::net::TCPServer<gp::protocol::ProtocolHandler<Test>> serv("127.0.0.1", 25565);
-    // serv.start();
-
-    // TODO: Proper console.
-    std::string s;
-    std::getline(std::cin, s);
-    // client.stop();
-
-    stde::net::deinit();
-    stde::log::log::clean();
+    std::ofstream o("out.dat");
+    c.save(o);
 }

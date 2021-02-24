@@ -1,6 +1,12 @@
 #ifndef INCLUDE_GPPROTOCOL_PACKETHANDER_HPP_
 #define INCLUDE_GPPROTOCOL_PACKETHANDER_HPP_
 
+namespace gp {
+    namespace protocol {
+        class PacketHandler;
+    }
+}
+
 #include "gpprotocol/ProtocolHandler.hpp"
 #include "stde/log/log.hpp"
 #include <iostream>
@@ -72,6 +78,11 @@ namespace gp {
              * Called when the connection with the client is closed.
              */
             virtual void closed() = 0;
+
+            /**
+             * Called when the handler has started
+             */
+            virtual void started() = 0;
         protected:
             /**
              * Logger
@@ -88,7 +99,7 @@ namespace gp {
                 m_dos = dos;
             }
 
-            template<typename, typename> friend class ProtocolHandler;
+            template<typename, typename > friend class ProtocolHandler;
         };
     }
 }

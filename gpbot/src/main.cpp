@@ -1,19 +1,19 @@
 #include <iostream>
 
-#include "gpconfig/Version.hpp"
-
 #include "stde/net/init.hpp"
 #include "stde/log/log.hpp"
 
-#include "gpproxy/ProxyConfig.hpp"
-#include "gpproxy/Proxy.hpp"
+#include "gpconfig/Version.hpp"
+
+#include "gpbot/Bot.hpp"
 
 int main(int argc, char** argv) {
-    boot_message("Proxy");
+    boot_message("Bot");
     stde::net::init();
 
-    gp::proxy::Proxy::getInstance().run();
+    gp::bot::Bot::getInstance().run();
 
     stde::net::deinit();
     stde::log::log::clean();
+    return 0;
 }

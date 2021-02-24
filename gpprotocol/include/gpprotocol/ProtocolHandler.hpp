@@ -38,6 +38,7 @@ namespace gp {
              * Handle the connection
              */
             void handle() {
+                handler.started();
                 while (!mustStop()) {
                     try {
                         Packet *p = Packet::parse(m_dis);

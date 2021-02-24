@@ -15,6 +15,8 @@ namespace gp {
          * @brief Represents a TCP handler
          */
         class TCPHandler {
+            template<typename, typename>
+            friend class TCPClient;
         public:
             /**
              * Constructor.

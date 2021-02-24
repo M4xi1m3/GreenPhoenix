@@ -50,4 +50,15 @@ namespace gp {
 
     }
 }
+
+#define NEW_COMMAND(CLASSNAME, NAME, USAGE, ...) \
+            class CLASSNAME: public gp::commands::Command { \
+            public: \
+                CLASSNAME() : gp::commands::Command() {} \
+                virtual ~CLASSNAME() {} \
+                virtual bool handle(std::vector<std::string> args) { __VA_ARGS__ } \
+                virtual std::string getName() { return NAME; } \
+                virtual std::string getUsage() { return USAGE; } \
+            };
+
 #endif

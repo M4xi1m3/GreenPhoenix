@@ -5,7 +5,10 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
-project(GreenPhoenix)
+project(GreenPhoenix VERSION 1.0.1)
+
+configure_file(gpconfig/Version.hpp.in gpconfig/gpconfig/Version.hpp)
+include_directories("${PROJECT_BINARY_DIR}/gpconfig")
 
 if(MSVC)
     set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
@@ -24,10 +27,12 @@ if(DEFINED ASAN)
 endif()
 
 add_subdirectory(external)
+add_subdirectory(gpworld)
 add_subdirectory(gpnet)
 add_subdirectory(gpprotocol)
 add_subdirectory(gpcommands)
 add_subdirectory(gpproxy)
+add_subdirectory(gpbot)
 add_subdirectory(gpserver)
 add_subdirectory(doc)
 

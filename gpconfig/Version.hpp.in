@@ -1,0 +1,25 @@
+#ifndef INCLUDE_GPCONFIG_VERSION_HPP_
+#define INCLUDE_GPCONFIG_VERSION_HPP_
+
+#define GP_VERSION_MAJOR @GreenPhoenix_VERSION_MAJOR@
+#define GP_VERSION_MINOR @GreenPhoenix_VERSION_MINOR@
+#define GP_VERSION_PATCH @GreenPhoenix_VERSION_PATCH@
+#define GP_VERSION @GreenPhoenix_VERSION@
+
+#define STR1(x)  #x
+#define STR(x)  STR1(x)
+
+#define boot_message(PROJECT) \
+    std::cout << std::endl; \
+    std::cout << "     ,,,     ,,                                                                       " << std::endl; \
+    std::cout << "   .;;'        ';      _____                     _____  _                      _      " << std::endl; \
+    std::cout << "  /((,  ,//;'`  ,,    / ____|                   |  __ \\| |                    (_)     " << std::endl; \
+    std::cout << "  (((( ,;//     ,,.  | |  __ _ __ ___  ___ _ __ | |__) | |__   ___   ___ _ __  ___  __" << std::endl; \
+    std::cout << "  (((( ;///\\   ,,,,  | | |_ | '__/ _ \\/ _ \\ '_ \\|  ___/| '_ \\ / _ \\ / _ \\ '_ \\| \\ \\/ /" << std::endl; \
+    std::cout << "  \\(((////////,,,,   | |__| | | |  __/  __/ | | | |    | | | | (_) |  __/ | | | |>  < " << std::endl; \
+    std::cout << "   `((////////;;,     \\_____|_|  \\___|\\___|_| |_|_|    |_| |_|\\___/ \\___|_| |_|_/_/\\_\\" << std::endl; \
+    std::cout << "      ``'^^^'``                                         - " << PROJECT << " v" << STR(GP_VERSION) << " - AGPLv3       " << std::endl; \
+    std::cout << std::endl;
+
+#endif
+

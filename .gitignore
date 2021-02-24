@@ -1,3 +1,8 @@
+
+# Logs and stuff
+/log/
+/.vs/
+
 # External dependencies
 /external/nbtpp
 /external/stde
@@ -5,6 +10,7 @@
 # Build directory
 /Debug/
 /build/
+/out/
 
 # Eclipse stuff
 .settings
@@ -14,4 +20,7 @@
 
 # Temporary lock files
 *~
+
+# World
+world/
 
