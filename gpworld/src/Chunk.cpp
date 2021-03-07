@@ -21,8 +21,8 @@ Chunk::Chunk(std::ifstream& file) {
 static inline int8_t* unpack_four(const int8_t* in, int8_t* out, size_t count) {
 
     for (int i = 0; i < (count / 2); i++) {
-        out[i] = (in[i] >> 4) & 0x0F;
-        out[i + 1] = in[i] & 0x0F;
+        out[i * 2] = (in[i] >> 4) & 0x0F;
+        out[i * 2 + 1] = in[i] & 0x0F;
     }
 
     return out;
@@ -39,7 +39,7 @@ static inline int8_t* unpack_four(const int8_t* in, int8_t* out, size_t count) {
 static inline int8_t* pack_four(const int8_t* in, int8_t* out, size_t count) {
 
     for (int i = 0; i < (count / 2); i++) {
-        out[i] = ((in[i] & 0x0F) << 4) | (in[i + 1] & 0x0F);
+        out[i] = ((in[i * 2] & 0x0F) << 4) | (in[i * 2 + 1] & 0x0F);
     }
 
     return out;
