@@ -37,7 +37,7 @@ namespace gp {
             static std::default_random_engine m_generator;
 
             /* Distribution on which to apply the generator */
-            static std::uniform_int_distribution<int64_t> m_distribution;
+            static std::uniform_int_distribution<uint64_t> m_distribution;
 
             static inline int64_t random() {
                 return m_distribution(m_generator);

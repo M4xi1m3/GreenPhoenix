@@ -10,7 +10,7 @@ using namespace gp::world;
 stde::log::log World::l = stde::log::log::get("world");
 std::random_device World::m_rd;
 std::default_random_engine World::m_generator(m_rd());
-std::uniform_int_distribution<int64_t> World::m_distribution(0,0xFFFFFFFFFFFFFFFF);
+std::uniform_int_distribution<uint64_t> World::m_distribution(0,0xFFFFFFFFFFFFFFFF);
 
 World::World(const std::string& name) : m_name(name) {
     if (!load())
@@ -20,7 +20,7 @@ World::World(const std::string& name) : m_name(name) {
 }
 
 bool World::load() {
-    std::string level_dat = m_name + std::filesystem::path::preferred_separator + "level.dat";
+    std::string level_dat = m_name + "/level.dat";
 
     l << stde::log::level::debug << "Loading " + level_dat << std::endl;
 
@@ -72,7 +72,7 @@ void World::save() {
         }
     }
 
-    std::string level_dat = m_name + std::filesystem::path::preferred_separator + "level.dat";
+    std::string level_dat = m_name + "/level.dat";
 
     l << stde::log::level::debug << "Saving " + level_dat << std::endl;
 

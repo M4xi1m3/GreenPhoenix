@@ -15,5 +15,5 @@ int main(int argc, char** argv) {
     c.save(o);
     */
 
-    gp::world::World w("worls");
+    gp::world::World w("world");
 }
