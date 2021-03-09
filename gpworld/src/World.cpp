@@ -29,18 +29,20 @@ bool World::load() {
         nbtpp::nbt tag(f);
         tag.debug();
 
-        nbtpp::tags::tag_compound *root = dynamic_cast<nbtpp::tags::tag_compound*>(tag.content());
-        nbtpp::tags::tag_compound *data = dynamic_cast<nbtpp::tags::tag_compound*>(root->get("Data"));
+        nbtpp::tags::tag_compound *root = tag.content<nbtpp::tags::tag_compound>();
 
-        m_lastPlayed = dynamic_cast<nbtpp::tags::tag_long*>(data->get("LastPlayed"))->value();
-        m_sizeOnDisk = dynamic_cast<nbtpp::tags::tag_long*>(data->get("SizeOnDisk"))->value();
-        m_randomSeed = dynamic_cast<nbtpp::tags::tag_long*>(data->get("RandomSeed"))->value();
+        // nbtpp::tags::tag_compound *root = dynamic_cast<nbtpp::tags::tag_compound*>(tag.content());
+        nbtpp::tags::tag_compound *data = root->get<nbtpp::tags::tag_compound>("Data");
 
-        m_spawnX = dynamic_cast<nbtpp::tags::tag_int*>(data->get("SpawnX"))->value();
-        m_spawnY = dynamic_cast<nbtpp::tags::tag_int*>(data->get("SpawnY"))->value();
-        m_spawnZ = dynamic_cast<nbtpp::tags::tag_int*>(data->get("SpawnZ"))->value();
+        m_lastPlayed = data->get<nbtpp::tags::tag_long>("LastPlayed")->value();
+        m_sizeOnDisk = data->get<nbtpp::tags::tag_long>("SizeOnDisk")->value();
+        m_randomSeed = data->get<nbtpp::tags::tag_long>("RandomSeed")->value();
 
-        m_time = dynamic_cast<nbtpp::tags::tag_long*>(data->get("Time"))->value();
+        m_spawnX = data->get<nbtpp::tags::tag_int>("SpawnX")->value();
+        m_spawnY = data->get<nbtpp::tags::tag_int>("SpawnY")->value();
+        m_spawnZ = data->get<nbtpp::tags::tag_int>("SpawnZ")->value();
+
+        m_time = data->get<nbtpp::tags::tag_long>("Time")->value();
 
         return true;
     } else {

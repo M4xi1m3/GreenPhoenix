@@ -49,24 +49,24 @@ void Chunk::load(std::ifstream& file) {
     m_tag.load_file(file);
     m_tag.debug();
 
-    nbtpp::tags::tag_compound *root = dynamic_cast<nbtpp::tags::tag_compound*>(m_tag.content());
+    nbtpp::tags::tag_compound *root = m_tag.content<nbtpp::tags::tag_compound>();
 
-    nbtpp::tags::tag_compound *level = dynamic_cast<nbtpp::tags::tag_compound*>(root->get("Level"));
+    nbtpp::tags::tag_compound *level = root->get<nbtpp::tags::tag_compound>("Level");
 
-    m_x = dynamic_cast<nbtpp::tags::tag_int*>(level->get("xPos"))->value();
-    m_z = dynamic_cast<nbtpp::tags::tag_int*>(level->get("zPos"))->value();
+    m_x = level->get<nbtpp::tags::tag_int>("xPos")->value();
+    m_z = level->get<nbtpp::tags::tag_int>("zPos")->value();
 
-    m_populated = dynamic_cast<nbtpp::tags::tag_byte*>(level->get("TerrainPopulated"))->value();
+    m_populated = level->get<nbtpp::tags::tag_byte>("TerrainPopulated")->value();
 
-    m_lastupdate = dynamic_cast<nbtpp::tags::tag_long*>(level->get("LastUpdate"))->value();
+    m_lastupdate = level->get<nbtpp::tags::tag_long>("LastUpdate")->value();
 
-    memcpy(m_block, dynamic_cast<nbtpp::tags::tag_bytearray*>(level->get("Blocks"))->value().data(), 32768);
+    memcpy(m_block, level->get<nbtpp::tags::tag_bytearray>("Blocks")->value().data(), 32768);
 
-    unpack_four(dynamic_cast<nbtpp::tags::tag_bytearray*>(level->get("Data"))->value().data(), m_data, 32768);
-    unpack_four(dynamic_cast<nbtpp::tags::tag_bytearray*>(level->get("BlockLight"))->value().data(), m_block_light, 32768);
-    unpack_four(dynamic_cast<nbtpp::tags::tag_bytearray*>(level->get("SkyLight"))->value().data(), m_sky_light, 32768);
+    unpack_four(level->get<nbtpp::tags::tag_bytearray>("Data")->value().data(), m_data, 32768);
+    unpack_four(level->get<nbtpp::tags::tag_bytearray>("BlockLight")->value().data(), m_block_light, 32768);
+    unpack_four(level->get<nbtpp::tags::tag_bytearray>("SkyLight")->value().data(), m_sky_light, 32768);
 
-    memcpy(m_height_map, dynamic_cast<nbtpp::tags::tag_bytearray*>(level->get("HeightMap"))->value().data(), 256);
+    memcpy(m_height_map, level->get<nbtpp::tags::tag_bytearray>("HeightMap")->value().data(), 256);
 
 }
 
